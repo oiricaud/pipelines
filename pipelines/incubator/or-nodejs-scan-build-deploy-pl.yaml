@@ -1,0 +1,83 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"tekton.dev/v1alpha1","kind":"Pipeline","metadata":{"annotations":{},"name":"or-nodejs-scan-build-deploy-pl","namespace":"kabanero"},"spec":{"params":[{"description":"The event type","name":"event-type","type":"string"},{"description":"The event ref","name":"event-ref","type":"string"}],"resources":[{"name":"git-source","type":"git"},{"name":"docker-image","type":"image"}],"tasks":[{"name":"validate-stack-task","resources":{"inputs":[{"name":"git-source","resource":"git-source"}]},"taskRef":{"kind":"Task","name":"nodejs-validate-stack-task"}},{"name":"scan-build-push-task","resources":{"inputs":[{"name":"git-source","resource":"git-source"}],"outputs":[{"name":"docker-image","resource":"docker-image"},{"name":"git-source","resource":"git-source"}]},"runAfter":["validate-stack-task"],"taskRef":{"kind":"Task","name":"nodejs-scan-build-push-task"}},{"name":"image-scan-task","resources":{"inputs":[{"name":"git-source","resource":"git-source"},{"name":"docker-image","resource":"docker-image"}]},"runAfter":["scan-build-push-task"],"taskRef":{"kind":"Task","name":"nodejs-image-scan-task"}},{"conditions":[{"conditionRef":"nodejs-deployment-condition","params":[{"name":"event-type","value":"$(params.event-type)"},{"name":"event-ref","value":"$(params.event-ref)"}]}],"name":"deploy-task","resources":{"inputs":[{"from":["scan-build-push-task"],"name":"git-source","resource":"git-source"},{"name":"docker-image","resource":"docker-image"}]},"runAfter":["image-scan-task"],"taskRef":{"kind":"Task","name":"nodejs-deploy-task"}}]}}
+  creationTimestamp: 2020-03-19T21:04:00Z
+  generation: 1
+  name: or-nodejs-scan-build-deploy-pl
+  namespace: kabanero
+  resourceVersion: "1281347"
+  selfLink: /apis/tekton.dev/v1alpha1/namespaces/kabanero/pipelines/or-nodejs-scan-build-deploy-pl
+  uid: bee77adb-0fb0-473f-b914-679f042c0936
+spec:
+  params:
+  - description: The event type
+    name: event-type
+    type: string
+  - description: The event ref
+    name: event-ref
+    type: string
+  resources:
+  - name: git-source
+    type: git
+  - name: docker-image
+    type: image
+  tasks:
+  - name: validate-stack-task
+    resources:
+      inputs:
+      - name: git-source
+        resource: git-source
+    taskRef:
+      kind: Task
+      name: nodejs-validate-stack-task
+  - name: scan-build-push-task
+    resources:
+      inputs:
+      - name: git-source
+        resource: git-source
+      outputs:
+      - name: docker-image
+        resource: docker-image
+      - name: git-source
+        resource: git-source
+    runAfter:
+    - validate-stack-task
+    taskRef:
+      kind: Task
+      name: nodejs-scan-build-push-task
+  - name: image-scan-task
+    resources:
+      inputs:
+      - name: git-source
+        resource: git-source
+      - name: docker-image
+        resource: docker-image
+    runAfter:
+    - scan-build-push-task
+    taskRef:
+      kind: Task
+      name: nodejs-image-scan-task
+  - conditions:
+    - conditionRef: nodejs-deployment-condition
+      params:
+      - name: event-type
+        value: $(params.event-type)
+      - name: event-ref
+        value: $(params.event-ref)
+    name: deploy-task
+    resources:
+      inputs:
+      - from:
+        - scan-build-push-task
+        name: git-source
+        resource: git-source
+      - name: docker-image
+        resource: docker-image
+    runAfter:
+    - image-scan-task
+    taskRef:
+      kind: Task
+      name: nodejs-deploy-task
