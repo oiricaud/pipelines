@@ -11,7 +11,7 @@
 # 2. The Kab operator has activated all the collections that are needed
 # 3. A github and docker account are needed. This script will create repositories with the Kabanero collection name, 
 #    so it assumed that for these provided accounts, these repo names are available to be overwritten.
-# 4. The manual pipeline instructions have been followed. That means a pv.yaml and secret.yaml have been applied
+# 4. The manual pipeline instructions have been followed. That means a pv.yaml and sonar-qube-secret.yaml have been applied
 #    to create a persistent volume and docker secret for my-docker-secret
 
 
