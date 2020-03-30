@@ -1,5 +1,5 @@
 BUILDING: kabanero/pipelines-index:SNAPSHOT
-Sending build context to Docker daemon  41.47kB
+Sending build context to Docker daemon  43.01kB
 Step 1/13 : FROM registry.access.redhat.com/ubi8/ubi-minimal
  ---> 6ce38bb5210c
 Step 2/13 : LABEL name="pipelies-index"       vendor="Kabanero"       version="1"       release="1"       summary="Nginx container to host Kabanero pipelines"       description="Nginx container to host Kabanero pipelines"
@@ -21,27 +21,27 @@ Step 7/13 : COPY nginx/startup.sh  /opt/startup.sh
  ---> Using cache
  ---> b41a7f5fb2ce
 Step 8/13 : COPY assets            /opt/www/public
- ---> 14ff05d75fbd
+ ---> ddc0f1ac2d85
 Step 9/13 : EXPOSE 8080
- ---> Running in 00ae7636edd4
-Removing intermediate container 00ae7636edd4
- ---> d4876d187dda
+ ---> Running in 8598f1313253
+Removing intermediate container 8598f1313253
+ ---> dbe5e0bc7be7
 Step 10/13 : EXPOSE 8443
- ---> Running in 6aa51786d4b0
-Removing intermediate container 6aa51786d4b0
- ---> 1d2c5f80cf02
+ ---> Running in d748218ff55a
+Removing intermediate container d748218ff55a
+ ---> b0ee176417e1
 Step 11/13 : RUN touch /var/run/nginx.pid &&   chown -R nginx:0 /var/run/nginx.pid /var/cache/nginx /opt/www/public /etc/nginx /run &&   chmod -R g=u /opt/www/public /var/cache/nginx /etc/nginx /var/run/nginx.pid /run
- ---> Running in 472a08efd8d9
-Removing intermediate container 472a08efd8d9
- ---> b80fb771f6ac
+ ---> Running in 11efe9d538d1
+Removing intermediate container 11efe9d538d1
+ ---> 55404c6d12af
 Step 12/13 : USER nginx
- ---> Running in b072a2742538
-Removing intermediate container b072a2742538
- ---> 9b71fd835389
+ ---> Running in c2fbb6e8781f
+Removing intermediate container c2fbb6e8781f
+ ---> a3ec57a5b8fc
 Step 13/13 : ENTRYPOINT ["/opt/startup.sh"]
- ---> Running in 7b3f89288dbe
-Removing intermediate container 7b3f89288dbe
- ---> f8e1bc1b7547
-Successfully built f8e1bc1b7547
+ ---> Running in f1010ec03c99
+Removing intermediate container f1010ec03c99
+ ---> e42579a4bb6e
+Successfully built e42579a4bb6e
 Successfully tagged kabanero/pipelines-index:latest
 Successfully tagged kabanero/pipelines-index:SNAPSHOT
