@@ -1,0 +1,5 @@
+contents:
+- file: woot-build-pl.yaml
+  sha256: 5c619c6d20619b70a2f42910b49eb50178773f99c70b2d42968228411bcb87aa
+- file: woot-build-task.yaml
+  sha256: c1fa1d50d74b205b269d1b0c2f48569adabca656551c561010c8fe0bc135d029
