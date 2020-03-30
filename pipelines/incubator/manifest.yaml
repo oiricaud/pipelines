@@ -1,5 +1,5 @@
 contents:
-- file: nodejs-woot-build-pl.yaml
-  sha256: c516fd4cd0e6e4def7c2513a18df0719dbb4cf677db3430cfb09acc7000300cc
-- file: nodejs-woot-build-task.yaml
-  sha256: c1fa1d50d74b205b269d1b0c2f48569adabca656551c561010c8fe0bc135d029
+- file: test-two-build-pl.yaml
+  sha256: e3a841124d650b6f58816040b3b41a319f6dcf0fe9dc7d9ff70b365dcb8bccb4
+- file: test-two-build-task.yaml
+  sha256: dae79b8303a19901acb463a6eec628599374379b298707a55100db2d8690cb28
