@@ -63,12 +63,12 @@ APP_REPO=$appGitRepo
 
 PIPELINE_RESOURCE_FILE=pipeline-resources-template.yaml
 CUSTOMIZED_PIPELINE_RESOURCE_FILE=${stackName}-${PIPELINE_RESOURCE_FILE}
-pipeline_resource_dockerimage_template_text="docker.io/<docker_id>/<docker_image_name>"
-pipeline_resource_git_resource_template_text="https://github.com/<git_id>/<git_repo_name>"
+pipeline_resource_dockerimage_template_text="docker.io/yellocabins/or-nodejs-express-stack"
+pipeline_resource_git_resource_template_text="https://github.com/oiricaud/appsody-demo-project"
 
 PIPELINE_RUN_MANUAL_FILE=manual-pipeline-run-template.yaml
 CUSTOMIZED_PIPELINE_RUN_MANUAL_FILE=${stackName}-${PIPELINE_RUN_MANUAL_FILE}
-pipeline_run_stack_name_template_text="<stack-name>"
+pipeline_run_stack_name_template_text="nodejs-express-stack"
 
 echo "Printing all the inputs"
 echo "DOCKER_IMAGE=$DOCKER_IMAGE"

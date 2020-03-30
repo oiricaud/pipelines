@@ -1,83 +1,54 @@
+#Kabanero! on activate substitute StackId for text 'StackId'
 apiVersion: tekton.dev/v1alpha1
 kind: Pipeline
 metadata:
-  annotations:
-    kubectl.kubernetes.io/last-applied-configuration: |
-      {"apiVersion":"tekton.dev/v1alpha1","kind":"Pipeline","metadata":{"annotations":{},"name":"nodejs-scan-build-deploy-pl","namespace":"kabanero"},"spec":{"params":[{"description":"The event type","name":"event-type","type":"string"},{"description":"The event ref","name":"event-ref","type":"string"}],"resources":[{"name":"git-source","type":"git"},{"name":"docker-image","type":"image"}],"tasks":[{"name":"validate-stack-task","resources":{"inputs":[{"name":"git-source","resource":"git-source"}]},"taskRef":{"kind":"Task","name":"nodejs-validate-stack-task"}},{"name":"scan-build-push-task","resources":{"inputs":[{"name":"git-source","resource":"git-source"}],"outputs":[{"name":"docker-image","resource":"docker-image"},{"name":"git-source","resource":"git-source"}]},"runAfter":["validate-stack-task"],"taskRef":{"kind":"Task","name":"nodejs-scan-build-push-task"}},{"name":"image-scan-task","resources":{"inputs":[{"name":"git-source","resource":"git-source"},{"name":"docker-image","resource":"docker-image"}]},"runAfter":["scan-build-push-task"],"taskRef":{"kind":"Task","name":"nodejs-image-scan-task"}},{"conditions":[{"conditionRef":"nodejs-deployment-condition","params":[{"name":"event-type","value":"$(params.event-type)"},{"name":"event-ref","value":"$(params.event-ref)"}]}],"name":"deploy-task","resources":{"inputs":[{"from":["scan-build-push-task"],"name":"git-source","resource":"git-source"},{"name":"docker-image","resource":"docker-image"}]},"runAfter":["image-scan-task"],"taskRef":{"kind":"Task","name":"nodejs-deploy-task"}}]}}
-  creationTimestamp: 2020-03-19T21:04:00Z
-  generation: 1
-  name: nodejs-scan-build-deploy-pl
-  namespace: kabanero
-  resourceVersion: "1281347"
-  selfLink: /apis/tekton.dev/v1alpha1/namespaces/kabanero/pipelines/nodejs-scan-build-deploy-pl
-  uid: bee77adb-0fb0-473f-b914-679f042c0936
+  name: nodejs-woot-build-pl
 spec:
   params:
-  - description: The event type
-    name: event-type
-    type: string
-  - description: The event ref
-    name: event-ref
-    type: string
+    - name: docker-imagename
+      type: string
+    - name: docker-imagetag
+      type: string
   resources:
-  - name: git-source
-    type: git
-  - name: docker-image
-    type: image
+    - name: git-source
+      type: git
+    - name: docker-image
+      type: image
   tasks:
-  - name: validate-stack-task
-    resources:
-      inputs:
-      - name: git-source
-        resource: git-source
-    taskRef:
-      kind: Task
-      name: nodejs-validate-stack-task
-  - name: scan-build-push-task
-    resources:
-      inputs:
-      - name: git-source
-        resource: git-source
-      outputs:
-      - name: docker-image
-        resource: docker-image
-      - name: git-source
-        resource: git-source
-    runAfter:
-    - validate-stack-task
-    taskRef:
-      kind: Task
-      name: nodejs-scan-build-push-task
-  - name: image-scan-task
-    resources:
-      inputs:
-      - name: git-source
-        resource: git-source
-      - name: docker-image
-        resource: docker-image
-    runAfter:
-    - scan-build-push-task
-    taskRef:
-      kind: Task
-      name: nodejs-image-scan-task
-  - conditions:
-    - conditionRef: nodejs-deployment-condition
+    - name: validate-stack-task
+      taskRef:
+        name: nodejs-validate-stack-task
+      resources:
+        inputs:
+          - name: git-source
+            resource: git-source
+    - name: imagename-lowercase-task
+      taskRef:
+        name: nodejs-imagename-lowercase-task
+      runAfter: [validate-stack-task]
       params:
-      - name: event-type
-        value: $(params.event-type)
-      - name: event-ref
-        value: $(params.event-ref)
-    name: deploy-task
-    resources:
-      inputs:
-      - from:
-        - scan-build-push-task
-        name: git-source
-        resource: git-source
-      - name: docker-image
-        resource: docker-image
-    runAfter:
-    - image-scan-task
-    taskRef:
-      kind: Task
-      name: nodejs-deploy-task
+        - name: docker-imagename
+          value: "$(params.docker-imagename)"
+        - name: docker-imagetag
+          value: "$(params.docker-imagetag)"
+      resources:
+        inputs:
+          - name: git-source
+            resource: git-source
+          - name: docker-image
+            resource: docker-image
+        outputs:
+          - name: git-source
+            resource: git-source
+    - name: woot-build-task
+      taskRef:
+        name: nodejs-woot-build-task
+      runAfter: [imagename-lowercase-task]
+      resources:
+        inputs:
+          - name: git-source
+            resource: git-source
+            from: [imagename-lowercase-task]
+        outputs:
+          - name: docker-image
+            resource: docker-image
