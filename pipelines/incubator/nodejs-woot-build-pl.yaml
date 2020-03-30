@@ -40,7 +40,7 @@ spec:
         outputs:
           - name: git-source
             resource: git-source
-    - name: woot-build-task
+    - name: nodejs-woot-build-task
       taskRef:
         name: nodejs-woot-build-task
       runAfter: [imagename-lowercase-task]
