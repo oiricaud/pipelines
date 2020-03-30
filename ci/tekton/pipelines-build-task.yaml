@@ -64,7 +64,7 @@ spec:
           mountPath: /var/lib/containers
 
     - name: deploy-pipelines-index
-      image: kabanero/kabanero-utils:0.3.0
+      image: yellocabins/kabanero-utils:0.3.0
       command: ['/bin/bash']
       args:
         - -cex
