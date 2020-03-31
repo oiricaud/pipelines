@@ -2,7 +2,7 @@
 apiVersion: tekton.dev/v1alpha1
 kind: Pipeline
 metadata:
-  name: StackId-test-two-build-pl
+  name: StackId-test-build-pl
 spec:
   params:
     - name: docker-imagename
@@ -20,8 +20,8 @@ spec:
         name: StackId-validate-stack-task
       resources:
         inputs:
-        - name: git-source
-          resource: git-source
+          - name: git-source
+            resource: git-source
     - name: imagename-lowercase-task
       taskRef:
         name: StackId-imagename-lowercase-task
@@ -33,22 +33,22 @@ spec:
           value: "$(params.docker-imagetag)"
       resources:
         inputs:
-        - name: git-source
-          resource: git-source
-        - name: docker-image
-          resource: docker-image
+          - name: git-source
+            resource: git-source
+          - name: docker-image
+            resource: docker-image
         outputs:
-        - name: git-source
-          resource: git-source
-    - name: test-two-build-task
+          - name: git-source
+            resource: git-source
+    - name: oir-test-build-task
       taskRef:
-        name: StackId-test-two-build-task
+        name: StackId-oir-test-build-task
       runAfter: [imagename-lowercase-task]
       resources:
         inputs:
-        - name: git-source
-          resource: git-source
-          from: [imagename-lowercase-task]
+          - name: git-source
+            resource: git-source
+            from: [imagename-lowercase-task]
         outputs:
-        - name: docker-image
-          resource: docker-image
+          - name: docker-image
+            resource: docker-image

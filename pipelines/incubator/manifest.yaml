@@ -1,5 +1,5 @@
 contents:
-- file: test-two-build-pl.yaml
-  sha256: e3a841124d650b6f58816040b3b41a319f6dcf0fe9dc7d9ff70b365dcb8bccb4
-- file: test-two-build-task.yaml
-  sha256: dae79b8303a19901acb463a6eec628599374379b298707a55100db2d8690cb28
+- file: oir-build-task.yaml
+  sha256: 15de84b49ef8b4e8d9c714961a82e5fac1fa080c3d5c18ee4c3048585dc2f195
+- file: oir-build-pl.yaml
+  sha256: 71200b496a722b2fdf1c3732c531dd109264e4b4d36a41593edc58d5bc1df231
