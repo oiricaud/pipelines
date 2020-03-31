@@ -44,7 +44,7 @@ spec:
         - |
           # install dependencies
           yum install -y findutils
-    
+
           # do build and release
           export USE_BUILDAH="true"
           export BUILDAH_FORMAT="docker"
@@ -64,7 +64,7 @@ spec:
           mountPath: /var/lib/containers
 
     - name: deploy-pipelines-index
-      image: yellocabins/kabanero-utils:0.3.0
+      image: kabanero/kabanero-utils:0.3.0
       command: ['/bin/bash']
       args:
         - -cex
@@ -107,108 +107,108 @@ kind: Role
 metadata:
   name: pipelines-index
 rules:
-- apiGroups:
-  - ""
-  resources:
-  - pods
-  - deployments
-  - services
-  verbs:
-  - get
-  - list
-  - create
-  - delete
-  - patch
-  - update
-  - watch
-- apiGroups:
-  - apps
-  resources:
-  - deployments
-  - deployments/rollback
-  - deployments/scale
-  verbs:
-  - get
-  - list
-  - create
-  - delete
-  - patch
-  - update
-  - watch
-- apiGroups:
-  - ""
-  - route.openshift.io
-  attributeRestrictions: null
-  resources:
-  - routes
-  verbs:
-  - create
-  - delete
-  - deletecollection
-  - get
-  - list
-  - patch
-  - update
-  - watch
-- apiGroups:
-  - ""
-  - route.openshift.io
-  attributeRestrictions: null
-  resources:
-  - routes/custom-host
-  verbs:
-  - create
-- apiGroups:
-  - ""
-  - route.openshift.io
-  attributeRestrictions: null
-  resources:
-  - routes/status
-  verbs:
-  - get
-  - list
-  - watch
-- apiGroups:
-  - ""
-  - image.openshift.io
-  attributeRestrictions: null
-  resources:
-  - imagestreams/layers
-  verbs:
-  - get
-  - update
-- apiGroups:
-  - ""
-  - image.openshift.io
-  attributeRestrictions: null
-  resources:
-  - imagestreams
-  verbs:
-  - create
-- apiGroups:
-  - ""
-  - build.openshift.io
-  attributeRestrictions: null
-  resources:
-  - builds/details
-  verbs:
-  - update
-- apiGroups:
-  - ""
-  - build.openshift.io
-  attributeRestrictions: null
-  resources:
-  - builds
-  verbs:
-  - get
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+      - deployments
+      - services
+    verbs:
+      - get
+      - list
+      - create
+      - delete
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - apps
+    resources:
+      - deployments
+      - deployments/rollback
+      - deployments/scale
+    verbs:
+      - get
+      - list
+      - create
+      - delete
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - ""
+      - route.openshift.io
+    attributeRestrictions: null
+    resources:
+      - routes
+    verbs:
+      - create
+      - delete
+      - deletecollection
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - ""
+      - route.openshift.io
+    attributeRestrictions: null
+    resources:
+      - routes/custom-host
+    verbs:
+      - create
+  - apiGroups:
+      - ""
+      - route.openshift.io
+    attributeRestrictions: null
+    resources:
+      - routes/status
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - ""
+      - image.openshift.io
+    attributeRestrictions: null
+    resources:
+      - imagestreams/layers
+    verbs:
+      - get
+      - update
+  - apiGroups:
+      - ""
+      - image.openshift.io
+    attributeRestrictions: null
+    resources:
+      - imagestreams
+    verbs:
+      - create
+  - apiGroups:
+      - ""
+      - build.openshift.io
+    attributeRestrictions: null
+    resources:
+      - builds/details
+    verbs:
+      - update
+  - apiGroups:
+      - ""
+      - build.openshift.io
+    attributeRestrictions: null
+    resources:
+      - builds
+    verbs:
+      - get
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: pipelines-index
 subjects:
-- kind: ServiceAccount
-  name: pipelines-index
+  - kind: ServiceAccount
+    name: pipelines-index
 roleRef:
   kind: Role
   name: pipelines-index
