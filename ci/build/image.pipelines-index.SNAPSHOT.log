@@ -1,2 +1,47 @@
 BUILDING: kabanero/pipelines-index:SNAPSHOT
-Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+Sending build context to Docker daemon  58.37kB
+Step 1/13 : FROM registry.access.redhat.com/ubi8/ubi-minimal
+ ---> 6ce38bb5210c
+Step 2/13 : LABEL name="pipelies-index"       vendor="Kabanero"       version="1"       release="1"       summary="Nginx container to host Kabanero pipelines"       description="Nginx container to host Kabanero pipelines"
+ ---> Using cache
+ ---> 01856cc4646f
+Step 3/13 : COPY nginx/nginx.repo  /etc/yum.repos.d/nginx.repo
+ ---> Using cache
+ ---> 3b0748a9eb02
+Step 4/13 : RUN microdnf install nginx findutils     && mkdir /var/cache/nginx     && chown -R nginx:0 /var/log/nginx/ /var/cache/nginx /usr/share/nginx     && chmod -R g=u /var/log/nginx/ /var/cache/nginx /usr/share/nginx     && mkdir /licenses     && cp /usr/share/doc/nginx*/* /licenses
+ ---> Using cache
+ ---> d93ab0af1b14
+Step 5/13 : COPY nginx/nginx.conf  /etc/nginx/nginx.conf
+ ---> Using cache
+ ---> e376becbcbcb
+Step 6/13 : COPY nginx/nginx-ssl.conf  /etc/nginx/nginx-ssl.conf
+ ---> Using cache
+ ---> 621acebd9d4f
+Step 7/13 : COPY nginx/startup.sh  /opt/startup.sh
+ ---> Using cache
+ ---> b41a7f5fb2ce
+Step 8/13 : COPY assets            /opt/www/public
+ ---> 64b285257d02
+Step 9/13 : EXPOSE 8080
+ ---> Running in a1df1a54216a
+Removing intermediate container a1df1a54216a
+ ---> f83e1e885c18
+Step 10/13 : EXPOSE 8443
+ ---> Running in 79c96703b276
+Removing intermediate container 79c96703b276
+ ---> 246244674c79
+Step 11/13 : RUN touch /var/run/nginx.pid &&   chown -R nginx:0 /var/run/nginx.pid /var/cache/nginx /opt/www/public /etc/nginx /run &&   chmod -R g=u /opt/www/public /var/cache/nginx /etc/nginx /var/run/nginx.pid /run
+ ---> Running in 935bed6ace41
+Removing intermediate container 935bed6ace41
+ ---> 9907ffbe5693
+Step 12/13 : USER nginx
+ ---> Running in 446e0222c0ee
+Removing intermediate container 446e0222c0ee
+ ---> d7e050db1f59
+Step 13/13 : ENTRYPOINT ["/opt/startup.sh"]
+ ---> Running in 57d4f9097212
+Removing intermediate container 57d4f9097212
+ ---> 361b098efe5d
+Successfully built 361b098efe5d
+Successfully tagged kabanero/pipelines-index:latest
+Successfully tagged kabanero/pipelines-index:SNAPSHOT

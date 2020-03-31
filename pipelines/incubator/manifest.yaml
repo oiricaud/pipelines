@@ -2,4 +2,4 @@ contents:
 - file: oir-build-task.yaml
   sha256: 15de84b49ef8b4e8d9c714961a82e5fac1fa080c3d5c18ee4c3048585dc2f195
 - file: oir-build-pl.yaml
-  sha256: 71200b496a722b2fdf1c3732c531dd109264e4b4d36a41593edc58d5bc1df231
+  sha256: 873ba84e2bcabd7c4a753e8ba1de7a11a86a34ab8218cbed8a9788617dccfeed
