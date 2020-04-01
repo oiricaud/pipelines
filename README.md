@@ -5,14 +5,11 @@ What is Tekton, Kabanero and Appsody?  You can think of Tekton as a very powerf
 In a nutshell Tekton is composed of Pipelines, PipelineRuns, Tasks, TaskRuns, TriggerBindings, TriggerEvents, Fig 1. provides more detail. Fig 2 provides an architecture overview of Kabanero.
 
 
-
-Fig 1. Tekton Overview
-
 ![alt tag](img/kabanero-arch.png "Kabanero") 
-
+Fig 1. Tekton Overview
+                                
 
 ![alt tag](img/tekton.png "Tekton") 
-
 Fig 2. Kabanero Architecture Overview 
 
 
@@ -50,9 +47,6 @@ stacks: 
 ```
 
 Here is a quick demo I made https://asciinema.org/a/315675
-
-
-
 
 
 ![](https://raw.githubusercontent.com/kabanero-io/kabanero-website/master/src/main/content/img/Kabanero_Logo_Hero.png)
