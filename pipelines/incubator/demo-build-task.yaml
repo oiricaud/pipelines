@@ -2,7 +2,7 @@
 apiVersion: tekton.dev/v1alpha1
 kind: Task
 metadata:
-  name: StackId-test-oir-build-task
+  name: StackId-demo-build-task
 spec:
   inputs:
     resources:

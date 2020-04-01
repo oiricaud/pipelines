@@ -1,0 +1,5 @@
+contents:
+- file: demo-build-pl.yaml
+  sha256: 284369cfded39e9a5d48d2036b317fae9ddff6c0ed2fd0e58dacbfed27592600
+- file: demo-build-task.yaml
+  sha256: f2aad4c198ad1a1d715d4c5fe757a6485ae5852183817b6f3b5d3d7a9c51a2c5

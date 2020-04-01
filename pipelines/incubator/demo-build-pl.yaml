@@ -2,7 +2,7 @@
 apiVersion: tekton.dev/v1alpha1
 kind: Pipeline
 metadata:
-  name: StackId-test-oir-build-pl
+  name: StackId-demo-build-pl
 spec:
   params:
     - name: docker-imagename
@@ -40,9 +40,9 @@ spec:
         outputs:
         - name: git-source
           resource: git-source
-    - name: test-oir-build-task
+    - name: demo-build-task
       taskRef:
-        name: StackId-test-oir-build-task
+        name: StackId-demo-build-task
       runAfter: [imagename-lowercase-task]
       resources:
         inputs:
