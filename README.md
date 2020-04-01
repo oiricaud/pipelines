@@ -27,7 +27,7 @@ The following steps demonstrate how to integrate a simple pipeline with Kabanero
 
     Step 1) Fork this repo https://github.com/kabanero-io/kabanero-pipelines
     Step 2) `cd pipelines/incubator` and remove all of these files.
-    Step 3) Create your custom pipelines tasks and pipelines refer to Fig 3.
+    Step 3) Create your custom pipelines tasks and pipelines refer to https://github.com/oiricaud/pipelines/tree/master/pipelines/incubator 
     Step 4) run the following commands 
   ```
   cd ci/
