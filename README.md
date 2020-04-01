@@ -14,6 +14,8 @@ In a nutshell Tekton is composed of Pipelines, PipelineRuns, Tasks, TaskRuns, Tr
 ![alt tag](img/kabanero-arch.png "Kabanero") 
 
 
+### Prereqs
+Openshift ICP4A (Cloudpak for Apps) or a local instance of minikube with Kabanero 0.6.0 installed
 
 
 # How to integrate custom pipelines with Kabanero ~ 15 mins 
