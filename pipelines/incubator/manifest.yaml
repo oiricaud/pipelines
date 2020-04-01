@@ -1,5 +1,0 @@
-contents:
-- file: test-oir-build-task.yaml
-  sha256: 27b8766bf8ed67a9aa86f5a32dffbd1bcb01079afe5dba2dfdc0fa2f361f1a52
-- file: test-oir-build-pl.yaml
-  sha256: b6ec244ad30b324e6a275b59342b6201d7f299bc4d7d2e51975859b050677cb8
