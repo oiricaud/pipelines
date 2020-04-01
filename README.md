@@ -41,6 +41,8 @@ These commands will do several things, it adds a manifest file where you created
       Step 6) Upload your tar file i.e `default-kabanero-pipelines.tar.gz` to your release
       Step 7) Edit your kabanero object in your cluster and have it point to this release as shown below i.e `oc edit kabaneros kabanero -o yaml` make sure you are in the kabanero namespace
 
+
+Run `oc edit kabaneros kabanero -o yaml` and edit the following file 
 ```
 stacks: 
    pipelines:
