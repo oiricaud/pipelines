@@ -16,13 +16,14 @@ In a nutshell Tekton is composed of Pipelines, PipelineRuns, Tasks, TaskRuns, Tr
 
 ### Prereqs
 Openshift ICP4A (Cloudpak for Apps) or a local instance of minikube with Kabanero 0.6.0 installed
+Also you need Sonarqube installed on your cluster, will provide instructions later.
 
 
 # How to integrate custom pipelines with Kabanero ~ 15 mins 
 What if the default Kabanero pipelines are not enough? You've spent some time developing your own pipelines, but the pipelines Kabanero provide are yet simple but not enough. Perhaps you have some java code that must store jar binaries in Artifactory or you need to do code analysis? How do we go about creating a custom pipeline for specific requirements? 
 
 
-The following steps demonstrate how to integrate a simple pipeline with Kabanero in which you can customize to full-fill requirements and most importantly be able to version control your pipelines. The only constant is change and it is important to have the ability to version control your custom pipelines. In which it will allow you to share custom pipelines across different clusters and cloud providers. 
+The following steps demonstrate how to integrate a a sonarqube pipeline with Kabanero in which you can customize to full-fill requirements and most importantly be able to version control your pipelines. The only constant is change and it is important to have the ability to version control your custom pipelines. In which it will allow you to share custom pipelines across different clusters and cloud providers. 
 
 
     Step 1) Fork this repo https://github.com/kabanero-io/kabanero-pipelines
