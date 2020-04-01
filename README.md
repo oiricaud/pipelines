@@ -8,7 +8,7 @@ In a nutshell Tekton is composed of Pipelines, PipelineRuns, Tasks, TaskRuns, Tr
 
 Fig 1. Tekton Overview
 
-![alt tag](img/kabanero.png "Kabanero") 
+![alt tag](img/kabanero-arch.png "Kabanero") 
 
 Fig 2. Kabanero Architecture Overview 
 
