@@ -38,7 +38,7 @@ The following steps demonstrate how to integrate a a sonarqube pipeline with Kab
   ```
 These commands will do several things, it adds a manifest file where you created your pipelines and add an artifact in your /assets folder named `default-kabanero-pipelines.tar.gz` you will then next upload this file in your release.
 
-      Step 5) Create a release on github./
+      Step 5) Create a release on github
       Step 6) Upload your tar file i.e `default-kabanero-pipelines.tar.gz` to your release
       Step 7) Edit your kabanero object in your cluster and have it point to this release as shown below i.e `oc edit kabaneros kabanero -o yaml` make sure you are in the kabanero namespace
 
