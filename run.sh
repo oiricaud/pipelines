@@ -115,7 +115,7 @@ update_kabanero_cr() {
   # define variables
   name_of_pipeline="oscar-custom-pipelines"
   pipeline_to_update=\"${name_of_pipeline}\"
-  new_url="www.kimmy.chan.com"
+  new_url="https://github.com/oiricaud/pipelines/releases/download/v34.0/default-kabanero-pipelines.tar.gz"
   get_sha=$(shasum -a 256 ./ci/assets/default-kabanero-pipelines.tar.gz | grep -Eo '^[^ ]+' )
 
   # add double quotes to the sha256
