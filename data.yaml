@@ -1,0 +1,18 @@
+David:
+  city: Brno
+  score: 33
+Jan:
+  city: Karvina
+  score: 3
+Pipi:
+  city: Stockholm
+    phonenumber:
+      - cell: 915
+    telephonenumber:
+      - cell: 915
+  town: El Paso
+    phonenumber:
+        - cell: 915
+    telephonenumber:
+      - cell: 915
+  score: 320
