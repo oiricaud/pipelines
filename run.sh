@@ -107,50 +107,66 @@ upload_asset() {
 
 # method is responsible for changing key/value pairs for the kabanero cr
 update_kabanero_cr() {
-  echo "updating kabanero cr"
   # oc get kabaneros kabanero -o yaml > tmp/kabanero.yaml
 
   echo $(cat temp.json | jq .spec.stacks.pipelines data.json) > temp.json
-  jq '.[2]' temp.json
-  printf result
-  if [ -d "$yaml_cli" ]
-    then
-      echo "EXISTS"
-  else
-      echo "DOES NOT EXIST"
-      # pip install pyyaml
-  fi
+
+  name_of_pipeline="oscar-custom-pipelines"
+  pipeline_to_update=\"${name_of_pipeline}\"
+  # Iterate through all pipelines in stack and find the id that matches the same repo name
+  num_of_pipelines=$(jq '.spec.stacks.pipelines | length' data.json)
+  pipeline_index=0
+  for ((n=0;n<num_of_pipelines;n++));
+    do
+      get_id=$(jq '.spec.stacks.pipelines | .['$n'].id' data.json)
+      echo "----> pipeline:" "$get_id"
+      if [ "$get_id" = $pipeline_to_update ]; then
+        echo "found pipeline!"
+        pipeline_index=$n;
+      fi
+  done
+  printf $pipeline_index
+
+  new_url="www.test.com"
+  new_sha="123"
+
+  jq '.spec.stacks.pipelines | .['$pipeline_index'].https.url = '\"${new_url}\"' | .['$pipeline_index'].sha256 = '\"${new_sha}\"' ' data.json | json_pp > kabanero.json
+
+  temp=$(cat ./kabanero.json)
+
+  echo $temp
+
+  jq_get_pipelines=$(jq '.spec.stacks.pipelines='"${temp}"'' data.json)
+  echo $jq_get_pipelines | json_pp > kabanero.json
+  
+  oc apply -f kabanero.json
 }
 # ask user input
 while true; do
 
-    printf '\360\237\246\204'
-    read -p " Do you want to
-    $(echo $'\n') 1) Create Release
-    $(echo $'\n') 2) Upload Asset to a release
+  printf '\360\237\246\204'
+  read -p " Do you want to
+    $(echo $'\n') 1) Create Release for your pipelines (when you want to push your pipelines to openshift)
+    $(echo $'\n') 2) Upload Asset to a release (kabanero needs a place to call
     $(echo $'\n') 3) Add, commit and push your latest changes to github?
     $(echo $'\n') 4) Update the Kabanero CR with a release?
     $(echo $'\n> ')" user_input
 
-    if [ "$user_input" = 1 ]
-      then
-        echo "creating release"
-        create_release
+  if [ "$user_input" = 1 ]; then
+    echo "creating release"
+    create_release
 
-    elif [ "$user_input" = 2 ]
-      then
-        echo "uploading asset"
-        upload_asset
+  elif [ "$user_input" = 2 ]; then
+    echo "uploading asset"
+    upload_asset
 
-    elif [ "$user_input" = 3 ]
-      then
-        echo "commit and push changes"
-        commit_push_latest
+  elif [ "$user_input" = 3 ]; then
+    echo "commit and push changes"
+    commit_push_latest
 
-    elif [ "$user_input" = 4 ]
-      then
-        echo "update kabanero cr"
-        update_kabanero_cr
-    fi
+  elif [ "$user_input" = 4 ]; then
+    echo "update kabanero cr"
+    update_kabanero_cr
+  fi
 
 done
