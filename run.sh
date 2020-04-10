@@ -18,6 +18,8 @@ commit_push_latest() {
 # runs subscripts in the ci/ directory
 env_package_release() {
   echo "env_package_release..."
+  cd .. ;
+  cd .. ;
   cd ./ci
   env.sh
   package.sh
@@ -115,7 +117,7 @@ update_kabanero_cr() {
   # define variables
   name_of_pipeline="oscar-custom-pipelines"
   pipeline_to_update=\"${name_of_pipeline}\"
-  new_url="https://github.com/oiricaud/pipelines/releases/download/v37.0/default-kabanero-pipelines.tar.gz"
+  new_url="https://github.com/oiricaud/pipelines/releases/download/v38.0/default-kabanero-pipelines.tar.gz"
   get_sha=$(shasum -a 256 ./ci/assets/default-kabanero-pipelines.tar.gz | grep -Eo '^[^ ]+' )
 
   # add double quotes to the sha256
@@ -160,6 +162,7 @@ while true; do
     $(echo $'\n') 2) Upload Asset to a release (kabanero needs a place to call
     $(echo $'\n') 3) Add, commit and push your latest changes to github?
     $(echo $'\n') 4) Update the Kabanero CR with a release?
+    $(echo $'\n') 5) Run env_package_release?
     $(echo $'\n> ')" user_input
 
   if [ "$user_input" = 1 ]; then
@@ -177,6 +180,11 @@ while true; do
   elif [ "$user_input" = 4 ]; then
     echo "update kabanero cr"
     update_kabanero_cr
+
+  elif [ "$user_input" = 4 ]; then
+  echo "env_package_ release"
+  env_package_release
+
   fi
 
 done

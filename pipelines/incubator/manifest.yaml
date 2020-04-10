@@ -1,11 +1,11 @@
 contents:
-- file: nodejs-build-push-mcm-pl-template.yaml
-  sha256: 2d4928eae8f09996482d50227210067d61998787cef554d33278b4582352fc3d
-- file: nodejs-build-push-mcm-pl-push-binding.yaml
-  sha256: 09ec3d4f97dab7e8d5acbbd6a969cdba6d09aef08d158009cdbce4951f919f76
+- file: nodejs-bam-pl-pullrequest-binding.yaml
+  sha256: 3dfa075c958420e32902017ea7e51f3f6ad40c737c2fda03d43ca5f7e764f658
+- file: nodejs-bam-pl-push-binding.yaml
+  sha256: 8d372005c3a7016edc403b0f6f2f835fc955365299bcd06d1fd15d73bd406659
+- file: nodejs-bam-pl-template.yaml
+  sha256: 1002cb638701a89496b9bf0e2f8025c9ea2a00ddfb57bb1ef754580c8bd46a66
 - file: mcm-task.yaml
-  sha256: cfea0aa93a919d333743ae3d4cd9eff360d04e095ab6259e9ff7a25a24c5c69a
-- file: nodejs-build-push-mcm-pl.yaml
-  sha256: 9f75b7c1f1dbf4c920c21785c21bb2c43c1e5a4f16eeecccda6bb294ec39a2fc
-- file: nodejs-build-push-mcm-pl-pullrequest-binding.yaml
-  sha256: ff36e6c504ccbc3f4ce44ff092a6f431327786c4190c95bfb1e9c5783080b777
+  sha256: 017b2dae55a0cb7f5cda2dc365d7117ae5271c8694b40b251323c3712c91df06
+- file: nodejs-bam-pl.yaml
+  sha256: cda2622255caaf7947a3c754440809c65fff187463d86c2bfd05216ee80acce1
