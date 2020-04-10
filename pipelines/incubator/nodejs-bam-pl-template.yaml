@@ -3,7 +3,7 @@ kind: TriggerTemplate
 metadata:
   annotations:
     manifestival: new
-  name: nodejs-build-push-mcm-pl-template
+  name: nodejs-bam-pl-template
   namespace: tekton-pipelines
 spec:
   params:

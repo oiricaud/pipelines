@@ -101,7 +101,7 @@ upload_asset() {
   # Construct url
   GH_ASSET="https://uploads.github.com/repos/$repo_full_name/releases/$id/assets?name=$(basename $filename)"
 
-kabanero-operator-stack-controller-c7bcfdf96-nmddg
+  curl "$GITHUB_OAUTH_BASIC" --data-binary @"$filename" -H "Authorization: token $github_api_token" -H "Content-Type: application/octet-stream" "$GH_ASSET"
 
 }
 
@@ -115,7 +115,7 @@ update_kabanero_cr() {
   # define variables
   name_of_pipeline="oscar-custom-pipelines"
   pipeline_to_update=\"${name_of_pipeline}\"
-  new_url="https://github.com/oiricaud/pipelines/releases/download/v34.0/default-kabanero-pipelines.tar.gz"
+  new_url="https://github.com/oiricaud/pipelines/releases/download/v37.0/default-kabanero-pipelines.tar.gz"
   get_sha=$(shasum -a 256 ./ci/assets/default-kabanero-pipelines.tar.gz | grep -Eo '^[^ ]+' )
 
   # add double quotes to the sha256

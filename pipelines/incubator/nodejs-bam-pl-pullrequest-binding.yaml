@@ -4,7 +4,7 @@ metadata:
   annotations:
     manifestival: new
   generation: 1
-  name: nodejs-build-push-mcm-pl-pullrequest-binding
+  name: nodejs-bam-pl-pullrequest-binding
   namespace: tekton-pipelines
 spec:
   params:

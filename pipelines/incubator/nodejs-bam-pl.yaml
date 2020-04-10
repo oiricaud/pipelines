@@ -3,7 +3,7 @@ kind: Pipeline
 metadata:
   creationTimestamp: '2020-04-08T22:05:15Z'
   generation: 1
-  name: nodejs-build-push-mcm-pl
+  name: nodejs-bam-pl
   namespace: kabanero
   resourceVersion: '1256225'
 spec:

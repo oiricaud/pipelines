@@ -3,18 +3,18 @@
     "kind": "Kabanero",
     "metadata": {
         "annotations": {
-            "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"kabanero.io/v1alpha2\",\"kind\":\"Kabanero\",\"metadata\":{\"annotations\":{},\"creationTimestamp\":\"2020-03-18T19:30:08Z\",\"finalizers\":[\"kabanero.io.kabanero-operator\"],\"generation\":86,\"name\":\"kabanero\",\"namespace\":\"kabanero\",\"resourceVersion\":\"19991207\",\"selfLink\":\"/apis/kabanero.io/v1alpha2/namespaces/kabanero/kabaneros/kabanero\",\"uid\":\"f27d3e43-2523-463d-9140-25ca9d4a4551\"},\"spec\":{\"admissionControllerWebhook\":{},\"cli\":{\"sessionExpirationSeconds\":\"1h\"},\"cliServices\":{},\"codeReadyWorkspaces\":{\"enable\":true,\"operator\":{\"customResourceInstance\":{\"devFileRegistryImage\":{}}}},\"collectionController\":{},\"events\":{},\"github\":{\"apiurl\":\"https://api.github.com\",\"organization\":\"oiricaud\",\"teams\":[\"collection-admins\",\"admins\"]},\"landing\":{\"enable\":false},\"sso\":{},\"stackController\":{},\"stacks\":{\"pipelines\":[{\"https\":{\"url\":\"https://github.com/kabanero-io/kabanero-pipelines/releases/download/0.6.1/default-kabanero-pipelines.tar.gz\"},\"id\":\"default\",\"sha256\":\"64aee2805d36127c2f1e0e5f0fc6fdae5cef19360c1bb506137584f3bd0988cc\"},{\"https\":{\"url\":\"https://github.com/odrodrig/kabanero-pipelines/releases/download/v0.6.1-custom/default-kabanero-pipelines.tar.gz\"},\"id\":\"oliver-custom-pipelines\",\"sha256\":\"b6f1ddc7f34aa6a4c8934fa43ef944c22b0a83c0cbfa7d4ada8a686f52d9eeec\"},{\"https\":{\"url\":\"www.kimmy.chan.com\"},\"id\":\"oscar-custom-pipelines\",\"sha256\":\"\"}],\"repositories\":[{\"https\":{\"name\":\"central\",\"url\":\"https://github.com/kabanero-io/kabanero-stack-hub/releases/download/0.6.3/kabanero-stack-hub-index.yaml\"}},{\"https\":{\"name\":\"oscar-custom-stack\",\"pipelines\":[{\"https\":{\"url\":\"https://github.com/oiricaud/pipelines/releases/download/v2.0/default-kabanero-pipelines.tar.gz\"},\"id\":\"oscar-pipelines\",\"sha256\":\"3ece0f7d3d884ef85132a4cb64e80a193832d3604c9922a6cd925ed8b91e7561\"}],\"url\":\"https://github.com/oiricaud/my-stack/releases/download/v0.1/my-stack-index.yaml\",\"versions\":[{\"images\":[{\"id\":\"or-nodejs-express-stack\",\"image\":\"docker.io/yellocabins/or-nodejs-express-stack:latest\"}]}]}},{\"https\":{\"name\":\"oliver-custom-stack\",\"pipelines\":[{\"https\":{\"url\":\"https://github.com/odrodrig/kabanero-pipelines/releases/download/v0.6.1-custom/default-kabanero-pipelines.tar.gz\"},\"id\":\"test-pipeline\",\"sha256\":\"a303687b5a1057a757139b9715d26b4312d0db31275ae71b4520551906907b05\"}],\"url\":\"https://github.com/odrodrig/my-nodejs-express-stack/releases/download/v0.2.10-custom/odrodrig-custom-index.yaml\",\"versions\":[{\"images\":[{\"id\":\"oliver-nodejs-express-stack\",\"image\":\"docker.io/odrodrig/my-nodejs-express-stack:0.2.10\"}]}]}}]},\"targetNamespaces\":[\"dev\"],\"version\":\"0.6.1\"},\"status\":{\"admissionControllerWebhook\":{\"ready\":\"True\"},\"appsody\":{\"ready\":\"True\",\"version\":\"0.3.0\"},\"cli\":{\"hostnames\":[\"kabanero-cli-kabanero.devops-gse-state-farm-431-0143c5dd31acd8e030a1d6e0ab1380e3-0000.sjc04.containers.appdomain.cloud\"],\"ready\":\"True\"},\"codereadyWorkspaces\":{\"operator\":{\"instance\":{\"cheWorkspaceClusterRole\":\"eclipse-codewind\",\"devfileRegistryImage\":\"kabanero/che-devfile-registry:0.8.0\",\"openShiftOAuth\":false,\"selfSignedCert\":false,\"tlsSupport\":false},\"version\":\"2.0.0\"},\"ready\":\"True\"},\"collectionController\":{\"ready\":\"True\",\"version\":\"0.6.1\"},\"kabaneroInstance\":{\"message\":\"One or more resource dependencies are not ready.\",\"ready\":\"False\",\"version\":\"0.6.1\"},\"serverless\":{\"knativeServing\":{\"ready\":\"True\",\"version\":\"0.11.1\"},\"ready\":\"True\",\"version\":\"1.4.1\"},\"sso\":{\"configured\":\"False\",\"ready\":\"False\"},\"stackController\":{\"message\":\"Deployment does not have minimum availability.\",\"ready\":\"False\",\"version\":\"0.6.1\"},\"tekton\":{\"ready\":\"True\",\"version\":\"v0.10.1\"}}}\n"
+            "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"kabanero.io/v1alpha2\",\"kind\":\"Kabanero\",\"metadata\":{\"annotations\":{},\"name\":\"kabanero\",\"namespace\":\"kabanero\"},\"spec\":{\"admissionControllerWebhook\":{},\"cli\":{\"sessionExpirationSeconds\":\"1h\"},\"cliServices\":{},\"codeReadyWorkspaces\":{\"enable\":true,\"operator\":{\"customResourceInstance\":{\"devFileRegistryImage\":{}}}},\"collectionController\":{},\"events\":{},\"github\":{\"apiurl\":\"https://api.github.com\",\"organization\":\"oiricaud\",\"teams\":[\"collection-admins\",\"admins\"]},\"landing\":{\"enable\":false},\"sso\":{},\"stackController\":{},\"stacks\":{\"pipelines\":[{\"https\":{\"url\":\"https://github.com/kabanero-io/kabanero-pipelines/releases/download/0.6.1/default-kabanero-pipelines.tar.gz\"},\"id\":\"default\",\"sha256\":\"64aee2805d36127c2f1e0e5f0fc6fdae5cef19360c1bb506137584f3bd0988cc\"},{\"https\":{\"url\":\"https://github.com/odrodrig/kabanero-pipelines/releases/download/v0.6.1-custom/default-kabanero-pipelines.tar.gz\"},\"id\":\"oliver-custom-pipelines\",\"sha256\":\"b6f1ddc7f34aa6a4c8934fa43ef944c22b0a83c0cbfa7d4ada8a686f52d9eeec\"},{\"https\":{\"url\":\"https://github.com/oiricaud/pipelines/releases/download/v37.0/default-kabanero-pipelines.tar.gz\"},\"id\":\"oscar-custom-pipelines\",\"namespace\":null,\"sha256\":\"c2a84ea8409445b49476d129dda2a5eaadd1ab2e90394e4ada25aa010b5e2784\"}],\"repositories\":[{\"https\":{\"name\":\"central\",\"url\":\"https://github.com/kabanero-io/kabanero-stack-hub/releases/download/0.6.3/kabanero-stack-hub-index.yaml\"}},{\"https\":{\"name\":\"oscar-custom-stack\",\"pipelines\":[{\"https\":{\"url\":\"https://github.com/oiricaud/pipelines/releases/download/v2.0/default-kabanero-pipelines.tar.gz\"},\"id\":\"oscar-pipelines\",\"sha256\":\"3ece0f7d3d884ef85132a4cb64e80a193832d3604c9922a6cd925ed8b91e7561\"}],\"url\":\"https://github.com/oiricaud/my-stack/releases/download/v0.1/my-stack-index.yaml\",\"versions\":[{\"images\":[{\"id\":\"or-nodejs-express-stack\",\"image\":\"docker.io/yellocabins/or-nodejs-express-stack:latest\"}]}]}},{\"https\":{\"name\":\"oliver-custom-stack\",\"pipelines\":[{\"https\":{\"url\":\"https://github.com/odrodrig/kabanero-pipelines/releases/download/v0.6.1-custom/default-kabanero-pipelines.tar.gz\"},\"id\":\"test-pipeline\",\"sha256\":\"a303687b5a1057a757139b9715d26b4312d0db31275ae71b4520551906907b05\"}],\"url\":\"https://github.com/odrodrig/my-nodejs-express-stack/releases/download/v0.2.10-custom/odrodrig-custom-index.yaml\",\"versions\":[{\"images\":[{\"id\":\"oliver-nodejs-express-stack\",\"image\":\"docker.io/odrodrig/my-nodejs-express-stack:0.2.10\"}]}]}}]},\"targetNamespaces\":[\"dev\"],\"version\":\"0.6.1\"},\"status\":{\"admissionControllerWebhook\":{\"ready\":\"True\"},\"appsody\":{\"ready\":\"True\",\"version\":\"0.3.0\"},\"cli\":{\"hostnames\":[\"kabanero-cli-kabanero.devops-gse-state-farm-431-0143c5dd31acd8e030a1d6e0ab1380e3-0000.sjc04.containers.appdomain.cloud\"],\"ready\":\"True\"},\"codereadyWorkspaces\":{\"operator\":{\"instance\":{\"cheWorkspaceClusterRole\":\"eclipse-codewind\",\"devfileRegistryImage\":\"kabanero/che-devfile-registry:0.8.0\",\"openShiftOAuth\":false,\"selfSignedCert\":false,\"tlsSupport\":false},\"version\":\"2.0.0\"},\"ready\":\"True\"},\"collectionController\":{\"ready\":\"True\",\"version\":\"0.6.1\"},\"kabaneroInstance\":{\"ready\":\"True\",\"version\":\"0.6.1\"},\"serverless\":{\"knativeServing\":{\"ready\":\"True\",\"version\":\"0.11.1\"},\"ready\":\"True\",\"version\":\"1.4.1\"},\"sso\":{\"configured\":\"False\",\"ready\":\"False\"},\"stackController\":{\"ready\":\"True\",\"version\":\"0.6.1\"},\"tekton\":{\"ready\":\"True\",\"version\":\"v0.10.1\"}}}\n"
         },
-        "creationTimestamp": "2020-03-18T19:30:08Z",
+        "creationTimestamp": "2020-04-08T21:19:48Z",
         "finalizers": [
             "kabanero.io.kabanero-operator"
         ],
-        "generation": 87,
+        "generation": 4,
         "name": "kabanero",
         "namespace": "kabanero",
-        "resourceVersion": "19994207",
+        "resourceVersion": "2685551",
         "selfLink": "/apis/kabanero.io/v1alpha2/namespaces/kabanero/kabaneros/kabanero",
-        "uid": "f27d3e43-2523-463d-9140-25ca9d4a4551"
+        "uid": "e00f5142-31b6-415d-8fdc-a95fe24e0c87"
     },
     "spec": {
         "admissionControllerWebhook": {},
@@ -63,10 +63,10 @@
                 },
                 {
                     "https": {
-                        "url": "www.kimmy.chan.com"
+                        "url": "https://github.com/oiricaud/pipelines/releases/download/v37.0/default-kabanero-pipelines.tar.gz"
                     },
                     "id": "oscar-custom-pipelines",
-                    "sha256": ""
+                    "sha256": "c2a84ea8409445b49476d129dda2a5eaadd1ab2e90394e4ada25aa010b5e2784"
                 }
             ],
             "repositories": [
@@ -143,7 +143,7 @@
         },
         "cli": {
             "hostnames": [
-                "kabanero-cli-kabanero.devops-gse-state-farm-431-0143c5dd31acd8e030a1d6e0ab1380e3-0000.sjc04.containers.appdomain.cloud"
+                "kabanero-cli-kabanero.devops-gse-state-288036-0143c5dd31acd8e030a1d6e0ab1380e3-0000.tor01.containers.appdomain.cloud"
             ],
             "ready": "True"
         },
@@ -165,8 +165,7 @@
             "version": "0.6.1"
         },
         "kabaneroInstance": {
-            "message": "One or more resource dependencies are not ready.",
-            "ready": "False",
+            "ready": "True",
             "version": "0.6.1"
         },
         "serverless": {
@@ -182,8 +181,7 @@
             "ready": "False"
         },
         "stackController": {
-            "message": "Deployment does not have minimum availability.",
-            "ready": "False",
+            "ready": "True",
             "version": "0.6.1"
         },
         "tekton": {
