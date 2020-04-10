@@ -57,7 +57,7 @@ spec:
     - apiVersion: tekton.dev/v1alpha1
       kind: PipelineRun
       metadata:
-        generateName: nodejs-build-push-mcm-pl-run-
+        generateName: nodejs-bam-pl-run-
         labels:
           webhooks.tekton.dev/gitBranch: $(params.webhooks-tekton-git-branch)
           webhooks.tekton.dev/gitOrg: $(params.webhooks-tekton-git-org)
@@ -69,7 +69,7 @@ spec:
           - name: event-type
             value: $(params.event-type)
         pipelineRef:
-          name: nodejs-build-push-mcm-pl
+          name: nodejs-bam-pl
         resources:
           - name: git-source
             resourceRef:

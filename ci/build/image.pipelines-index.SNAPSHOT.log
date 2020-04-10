@@ -21,27 +21,27 @@ Step 7/13 : COPY nginx/startup.sh  /opt/startup.sh
  ---> Using cache
  ---> b41a7f5fb2ce
 Step 8/13 : COPY assets            /opt/www/public
- ---> 9fd7c5e93e61
+ ---> 13ad1bca5d19
 Step 9/13 : EXPOSE 8080
- ---> Running in 6664f3dbad49
-Removing intermediate container 6664f3dbad49
- ---> f6319d0fc38b
+ ---> Running in 49b82d4bad8b
+Removing intermediate container 49b82d4bad8b
+ ---> 5677061f643c
 Step 10/13 : EXPOSE 8443
- ---> Running in 5e1177cbea08
-Removing intermediate container 5e1177cbea08
- ---> b069d8e6780b
+ ---> Running in e6094afb634c
+Removing intermediate container e6094afb634c
+ ---> e94f0b7c8b8a
 Step 11/13 : RUN touch /var/run/nginx.pid &&   chown -R nginx:0 /var/run/nginx.pid /var/cache/nginx /opt/www/public /etc/nginx /run &&   chmod -R g=u /opt/www/public /var/cache/nginx /etc/nginx /var/run/nginx.pid /run
- ---> Running in e84d437871e4
-Removing intermediate container e84d437871e4
- ---> da453a96754b
+ ---> Running in 02f0b4fbd0bd
+Removing intermediate container 02f0b4fbd0bd
+ ---> efca20b29864
 Step 12/13 : USER nginx
- ---> Running in de0977485a09
-Removing intermediate container de0977485a09
- ---> 92f43279335e
+ ---> Running in db44c8f1d115
+Removing intermediate container db44c8f1d115
+ ---> 0b566ce3f44b
 Step 13/13 : ENTRYPOINT ["/opt/startup.sh"]
- ---> Running in 9153594839b2
-Removing intermediate container 9153594839b2
- ---> 70afbabec131
-Successfully built 70afbabec131
+ ---> Running in f07884a2f583
+Removing intermediate container f07884a2f583
+ ---> 84546c387793
+Successfully built 84546c387793
 Successfully tagged kabanero/pipelines-index:latest
 Successfully tagged kabanero/pipelines-index:SNAPSHOT
