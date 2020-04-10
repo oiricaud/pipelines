@@ -3,6 +3,8 @@ contents:
   sha256: 3dfa075c958420e32902017ea7e51f3f6ad40c737c2fda03d43ca5f7e764f658
 - file: nodejs-bam-pl-push-binding.yaml
   sha256: 8d372005c3a7016edc403b0f6f2f835fc955365299bcd06d1fd15d73bd406659
+- file: igc-nodejs-test.yaml
+  sha256: e9c0ea05eaf094d4286f4da1d45327e172609cdc1ee4c29e546d57210ad03baf
 - file: nodejs-bam-pl-template.yaml
   sha256: 1002cb638701a89496b9bf0e2f8025c9ea2a00ddfb57bb1ef754580c8bd46a66
 - file: mcm-task.yaml
