@@ -101,7 +101,7 @@ upload_asset() {
   # Construct url
   GH_ASSET="https://uploads.github.com/repos/$repo_full_name/releases/$id/assets?name=$(basename $filename)"
 
-  curl "$GITHUB_OAUTH_BASIC" --data-binary @"$filename" -H "Authorization: token $github_api_token" -H "Content-Type: application/octet-stream" "$GH_ASSET"
+kabanero-operator-stack-controller-c7bcfdf96-nmddg
 
 }
 
