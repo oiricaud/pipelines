@@ -1,0 +1,11 @@
+contents:
+- file: nodejs-build-push-mcm-pl-template.yaml
+  sha256: 2d4928eae8f09996482d50227210067d61998787cef554d33278b4582352fc3d
+- file: nodejs-build-push-mcm-pl-push-binding.yaml
+  sha256: 09ec3d4f97dab7e8d5acbbd6a969cdba6d09aef08d158009cdbce4951f919f76
+- file: mcm-task.yaml
+  sha256: cfea0aa93a919d333743ae3d4cd9eff360d04e095ab6259e9ff7a25a24c5c69a
+- file: nodejs-build-push-mcm-pl.yaml
+  sha256: 9f75b7c1f1dbf4c920c21785c21bb2c43c1e5a4f16eeecccda6bb294ec39a2fc
+- file: nodejs-build-push-mcm-pl-pullrequest-binding.yaml
+  sha256: ff36e6c504ccbc3f4ce44ff092a6f431327786c4190c95bfb1e9c5783080b777

@@ -65,4 +65,4 @@ spec:
       runAfter:
         - image-scan-task
       taskRef:
-        name: mcm-task # igc-gitops
+        name: mcm-task
