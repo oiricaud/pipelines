@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1alpha1
 kind: Pipeline
 metadata:
-  name: nodejs-bam-pl
+  name: nodejs-mcm-pl
   namespace: kabanero
 spec:
   params:
@@ -62,4 +62,4 @@ spec:
       runAfter:
         - image-scan-task
       taskRef:
-        name: mcm-task
+        name: clone-ops-update-repo-task

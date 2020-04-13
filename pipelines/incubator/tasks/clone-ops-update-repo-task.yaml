@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1alpha1
 kind: Task
 metadata:
-  name: mcm-task
+  name: clone-ops-update-repo-task
 spec:
   inputs:
     resources:
@@ -52,7 +52,7 @@ spec:
 
           echo $(inputs.resources.source.path)
           git add .
-          git commit -m "updated app-deploy.yaml from mcm-task"
+          git commit -m "updated app-deploy.yaml from clone-ops-update-repo-task"
           git push
 
 #    - name: gitops

@@ -3,7 +3,7 @@ kind: TriggerBinding
 metadata:
   annotations:
     manifestival: new
-  name: nodejs-bam-pl-push-binding
+  name: nodejs-mcm-pl-push-binding
   namespace: tekton-pipelines
 spec:
   params:
