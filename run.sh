@@ -42,8 +42,7 @@ EOF
 
 # method is responsible for creating a release
 create_release() {
-  echo "create_release..."
-  read -p "Enter Release Version: " version
+  read -p "Enter Release Version i.e v1.0 : " version
   read -p "Enter description of release " text
   echo "Create release $version for repo: $repo_full_name branch: $branch"
   curl --data "$(get_release_info)" "https://api.github.com/repos/$repo_full_name/releases?access_token=$token"
@@ -51,9 +50,7 @@ create_release() {
 
 # method is responsible for uploading an asset to a release
 upload_asset() {
-  echo "uploading asset..."
-
-  read -p "Enter tag to upload asset: " tag
+  read -p "Upload asset to what version? i.e v1.0 : " tag
 
   filename=./ci/assets/default-kabanero-pipelines.tar.gz
   github_api_token=$(git config --global github.token)
@@ -95,14 +92,10 @@ upload_asset() {
     exit 1
   }
 
-  # Upload asset
-  echo "Uploading asset... "
-
   # Construct url
   GH_ASSET="https://uploads.github.com/repos/$repo_full_name/releases/$id/assets?name=$(basename $filename)"
 
   curl "$GITHUB_OAUTH_BASIC" --data-binary @"$filename" -H "Authorization: token $github_api_token" -H "Content-Type: application/octet-stream" "$GH_ASSET"
-
 }
 
 
@@ -112,10 +105,12 @@ update_kabanero_cr() {
   # get current kabanero custom resource from openshift and store it in a temp file
   oc get kabaneros kabanero -o json > ./json/temp.json
 
+  read -p "Enter name of pipeline to update " name_of_pipeline
+  read -p "Enter release version to use on this pipeline " release_version
+
   # define variables
-  name_of_pipeline="oscar-custom-pipelines"
   pipeline_to_update=\"${name_of_pipeline}\"
-  new_url="https://github.com/oiricaud/pipelines/releases/download/v42.0/default-kabanero-pipelines.tar.gz"
+  new_url="https://github.com/oiricaud/pipelines/releases/download/$release_version/default-kabanero-pipelines.tar.gz"
   get_sha=$(shasum -a 256 ./ci/assets/default-kabanero-pipelines.tar.gz | grep -Eo '^[^ ]+' )
 
   # add double quotes to the sha256
@@ -160,11 +155,12 @@ while true; do
 
   printf '\360\237\246\204'
   read -p " Do you want to
-    1) Set up environment, containerzied pipelines and release them to a registry
-    2) Add, commit and push your latest changes to github
-    3) Create a git release for your pipelines
-    4) Upload an asset to a git release version
-    5) Update the Kabanero CR with a release?
+    1) Set up environment, containerzied pipelines and release them to a registry?
+    2) Add, commit and push your latest changes to github?
+    3) Create a git release for your pipelines?
+    4) Upload an asset to a git release version?
+    5) Update the Kabanero CR custom resource with a release?
+    6) Add a stable pipeline release version to the Kabanero custom resource?
     enter a number > " user_input
 
   if [ "$user_input" = 1 ]; then

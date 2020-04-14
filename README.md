@@ -22,20 +22,23 @@ Also you need Sonarqube installed on your cluster, will provide instructions lat
 # How to integrate custom pipelines with Kabanero ~ 15 mins 
 What if the default Kabanero pipelines are not enough? You've spent some time developing your own pipelines, but the pipelines Kabanero provide are yet simple but not enough. Perhaps you have some java code that must store jar binaries in Artifactory or you need to do code analysis? How do we go about creating a custom pipeline for specific requirements? 
 
+ ```
+ ~/Documents/gse-devops/github.com/pipelines   master ●  ./run.sh
+===========================================================================
 
-The following steps demonstrate how to integrate a a sonarqube pipeline with Kabanero in which you can customize to full-fill requirements and most importantly be able to version control your pipelines. The only constant is change and it is important to have the ability to version control your custom pipelines. In which it will allow you to share custom pipelines across different clusters and cloud providers. 
+======================== AUTOMATOR SCRIPT =================================
 
+===========================================================================
 
-    Step 1) Fork this repo https://github.com/kabanero-io/kabanero-pipelines
-    Step 2) `cd pipelines/incubator` and remove all of these files.
-    Step 3) Create your custom pipelines tasks and pipelines refer to https://github.com/oiricaud/pipelines/tree/master/pipelines/incubator 
-    Step 4) run the following commands 
-  ```
-  cd ci/
-  ./env.sh
-  ./package.sh
-  ./release.sh  
-  ```
+🦄 Do you want to
+    1) Set up environment, containerzied pipelines and release them to a registry?
+    2) Add, commit and push your latest changes to github?
+    3) Create a git release for your pipelines?
+    4) Upload an asset to a git release version?
+    5) Update the Kabanero CR custom resource with a release?
+    6) Add a stable pipeline release version to the Kabanero custom resource?
+    enter a number >
+```
 These commands will do several things, it adds a manifest file where you created your pipelines and add an artifact in your /assets folder named `default-kabanero-pipelines.tar.gz` you will then next upload this file in your release.
 
       Step 5) Create a release on github
