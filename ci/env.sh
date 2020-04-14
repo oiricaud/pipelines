@@ -16,22 +16,6 @@ mkdir -p $build_dir
 
 # ENVIRONMENT VARIABLES for controlling behavior of build, package, and release
 
-# Publish images to image registry
-# export IMAGE_REGISTRY_PUBLISH=false
-
-# Credentials for publishing images:
-# export IMAGE_REGISTRY
-# export IMAGE_REGISTRY_USERNAME
-# export IMAGE_REGISTRY_PASSWORD
-
-# Organization for images
-# export IMAGE_REGISTRY_ORG=kabanero
-
-# Name of pipelines-index image (ci/package.sh)
-# export INDEX_IMAGE=pipelines-index
-
-# Version or snapshot identifier for pipelines-index (ci/package.sh)
-# export INDEX_VERSION=SNAPSHOT
 
 # Use buildah instead of docker to build and push docker images when the value is true
 # export USE_BUILDAH=false
@@ -119,7 +103,7 @@ exec_hooks $script_dir/ext/pre_env.d
 # image registry org for publishing stack
 if [ -z "$IMAGE_REGISTRY_ORG" ]
 then
-    export IMAGE_REGISTRY_ORG=kabanero
+    export IMAGE_REGISTRY_ORG=yellocabins
 fi
 
 # image registry for publishing stack

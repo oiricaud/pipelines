@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-printf "=====================================================================\n\n"
-printf "========================= AUTOMATOR =================================\n\n"
-
 # define variables
 CONFIG=$@
 branch=$(git rev-parse --abbrev-ref HEAD)
@@ -18,11 +15,11 @@ commit_push_latest() {
 
 # runs subscripts in the ci/ directory
 env_package_release() {
-  echo "env_package_release..."
-  cd ./ci
-  env.sh
-  package.sh
-  release.sh
+  pwd
+  cd ci
+  ./env.sh
+  ./package.sh
+  ./release.sh
   cd ..
 }
 
@@ -153,37 +150,76 @@ update_kabanero_cr() {
   oc get kabaneros kabanero -o yaml
 }
 
+printf "===========================================================================\n\n"
+printf "======================== AUTOMATOR SCRIPT =================================\n\n"
+printf "===========================================================================\n\n"
+
 # ask user input
 while true; do
 
   printf '\360\237\246\204'
   read -p " Do you want to
-    1) Add, commit and push your latest changes to github?
-    2) Create a git release for your pipelines
-    3) Upload an asset to a git release version
-    4) Update the Kabanero CR with a release?
-    5) Create manifests for pipelines?
-    > " user_input
+    1) Set up environment, containerzied pipelines and release them to a registry
+    2) Add, commit and push your latest changes to github
+    3) Create a git release for your pipelines
+    4) Upload an asset to a git release version
+    5) Update the Kabanero CR with a release?
+    enter a number > " user_input
 
   if [ "$user_input" = 1 ]; then
-    echo "commit and push changes"
-    commit_push_latest
+    printf "**************************************************************************\n\n"
+    printf "**************** BEGIN SETTING UP ENV, PACKAGE AND RELEASE ***************\n\n"
+    printf "**************************************************************************\n\n"
+
+    env_package_release
+
+    printf "\n*************************************************************************\n\n"
+    printf "**************** FINISHED SETTING UP ENV, PACKAGE AND RELEASE *************\n\n"
+    printf "**************************************************************************\n\n"
 
   elif [ "$user_input" = 2 ]; then
-    echo "creating release"
-    create_release
+    printf "**************************************************************************\n\n"
+    printf "================ BEGIN GIT ADD, COMMIT AND PUSH ===========================\n\n"
+    printf "**************************************************************************\n\n"
+
+    commit_push_latest
+
+    printf "**************************************************************************\n\n"
+    printf "================ FINISHED GIT ADD, COMMIT AND PUSH ========================\n\n"
+    printf "**************************************************************************\n\n"
 
   elif [ "$user_input" = 3 ]; then
-    echo "uploading asset"
+    printf "**************************************************************************\n\n"
+    printf "================ BEGIN CREATING RELEASE ===================================\n\n"
+    printf "**************************************************************************\n\n"
+
+    create_release
+
+    printf "**************************************************************************\n\n"
+    printf "================ FINISHED CREATING RELEASE ================================\n\n"
+    printf "**************************************************************************\n\n"
+
+  elif [ "$user_input" = 4 ]; then
+    printf "**************************************************************************\n\n"
+    printf "================ BEGIN UPLOADING ASSET ====================================\n\n"
+    printf "**************************************************************************\n\n"
+
     upload_asset
 
-  elif [ "$user_input" = 4 ]; then
-    echo "update kabanero cr"
+    printf "**************************************************************************\n\n"
+    printf "================ FINISHED UPLOADING ASSET =================================\n\n"
+    printf "**************************************************************************\n\n"
+
+  elif [ "$user_input" = 5 ]; then
+    printf "**************************************************************************\n\n"
+    printf "================ BEGIN UPDATING KABANERO CUSTOM RESOURCE ==================\n\n"
+    printf "**************************************************************************\n\n"
+
     update_kabanero_cr
 
-  elif [ "$user_input" = 4 ]; then
-  echo "env_package_ release"
-  env_package_release
+    printf "**************************************************************************\n\n"
+    printf "================ FINISHED UPDATING KABANERO CUSTOM RESOURCE ===============\n\n"
+    printf "**************************************************************************\n\n"
 
   fi
 

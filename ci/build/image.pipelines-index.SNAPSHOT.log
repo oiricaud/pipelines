@@ -1,2 +1,47 @@
-BUILDING: kabanero/pipelines-index:SNAPSHOT
-Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+BUILDING: yellocabins/pipelines-index:SNAPSHOT
+Sending build context to Docker daemon  55.81kB
+Step 1/13 : FROM registry.access.redhat.com/ubi8/ubi-minimal
+ ---> 6ce38bb5210c
+Step 2/13 : LABEL name="pipelies-index"       vendor="Kabanero"       version="1"       release="1"       summary="Nginx container to host Kabanero pipelines"       description="Nginx container to host Kabanero pipelines"
+ ---> Using cache
+ ---> 01856cc4646f
+Step 3/13 : COPY nginx/nginx.repo  /etc/yum.repos.d/nginx.repo
+ ---> Using cache
+ ---> 3b0748a9eb02
+Step 4/13 : RUN microdnf install nginx findutils     && mkdir /var/cache/nginx     && chown -R nginx:0 /var/log/nginx/ /var/cache/nginx /usr/share/nginx     && chmod -R g=u /var/log/nginx/ /var/cache/nginx /usr/share/nginx     && mkdir /licenses     && cp /usr/share/doc/nginx*/* /licenses
+ ---> Using cache
+ ---> d93ab0af1b14
+Step 5/13 : COPY nginx/nginx.conf  /etc/nginx/nginx.conf
+ ---> Using cache
+ ---> e376becbcbcb
+Step 6/13 : COPY nginx/nginx-ssl.conf  /etc/nginx/nginx-ssl.conf
+ ---> Using cache
+ ---> 621acebd9d4f
+Step 7/13 : COPY nginx/startup.sh  /opt/startup.sh
+ ---> Using cache
+ ---> b41a7f5fb2ce
+Step 8/13 : COPY assets            /opt/www/public
+ ---> 0249f6d09f30
+Step 9/13 : EXPOSE 8080
+ ---> Running in c9f620419ba1
+Removing intermediate container c9f620419ba1
+ ---> 3dcff92be075
+Step 10/13 : EXPOSE 8443
+ ---> Running in b561d606f3a2
+Removing intermediate container b561d606f3a2
+ ---> 24cb820bcd4a
+Step 11/13 : RUN touch /var/run/nginx.pid &&   chown -R nginx:0 /var/run/nginx.pid /var/cache/nginx /opt/www/public /etc/nginx /run &&   chmod -R g=u /opt/www/public /var/cache/nginx /etc/nginx /var/run/nginx.pid /run
+ ---> Running in 7e2594b719fb
+Removing intermediate container 7e2594b719fb
+ ---> 2ef09db8c4a2
+Step 12/13 : USER nginx
+ ---> Running in 83cbbfc10e0a
+Removing intermediate container 83cbbfc10e0a
+ ---> de7fc2f37137
+Step 13/13 : ENTRYPOINT ["/opt/startup.sh"]
+ ---> Running in cc62095d8d0a
+Removing intermediate container cc62095d8d0a
+ ---> 8916540d957d
+Successfully built 8916540d957d
+Successfully tagged yellocabins/pipelines-index:latest
+Successfully tagged yellocabins/pipelines-index:SNAPSHOT
