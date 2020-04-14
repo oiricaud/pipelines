@@ -158,12 +158,12 @@ while true; do
 
   printf '\360\237\246\204'
   read -p " Do you want to
-    $('\n') 1) Add, commit and push your latest changes to github?
-    $('\n') 2) Create a git release for your pipelines
-    $('\n') 3) Upload an asset to a git release version
-    $('\n') 4) Update the Kabanero CR with a release?
-    $('\n') 5) Create manifests for pipelines?
-    $('\n> ')" user_input
+    1) Add, commit and push your latest changes to github?
+    2) Create a git release for your pipelines
+    3) Upload an asset to a git release version
+    4) Update the Kabanero CR with a release?
+    5) Create manifests for pipelines?
+    > " user_input
 
   if [ "$user_input" = 1 ]; then
     echo "commit and push changes"
