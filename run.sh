@@ -9,7 +9,7 @@ token=$(git config --global github.token)
 # commits latest changes and pushes them to the git repo
 commit_push_latest() {
   git add .
-  # git reset ./ci/env.sh
+  git reset ./ci/env.sh
   git commit -m "uploading pipelines"
   git push -u origin master
 }
