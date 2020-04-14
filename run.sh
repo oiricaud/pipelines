@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-printf "========== AUTOMATOR ===============================================\n\n"
+printf "=====================================================================\n\n"
+printf "========================= AUTOMATOR =================================\n\n"
 
 # define variables
 CONFIG=$@
@@ -18,12 +19,11 @@ commit_push_latest() {
 # runs subscripts in the ci/ directory
 env_package_release() {
   echo "env_package_release..."
-  cd .. ;
-  cd .. ;
   cd ./ci
   env.sh
   package.sh
   release.sh
+  cd ..
 }
 
 # gets the release information that gets uploaded to github
@@ -117,7 +117,7 @@ update_kabanero_cr() {
   # define variables
   name_of_pipeline="oscar-custom-pipelines"
   pipeline_to_update=\"${name_of_pipeline}\"
-  new_url="https://github.com/oiricaud/pipelines/releases/download/v41.0/default-kabanero-pipelines.tar.gz"
+  new_url="https://github.com/oiricaud/pipelines/releases/download/v42.0/default-kabanero-pipelines.tar.gz"
   get_sha=$(shasum -a 256 ./ci/assets/default-kabanero-pipelines.tar.gz | grep -Eo '^[^ ]+' )
 
   # add double quotes to the sha256
@@ -158,24 +158,24 @@ while true; do
 
   printf '\360\237\246\204'
   read -p " Do you want to
-    $(echo $'\n') 1) Create Release for your pipelines (when you want to push your pipelines to openshift)
-    $(echo $'\n') 2) Upload Asset to a release (kabanero needs a place to call
-    $(echo $'\n') 3) Add, commit and push your latest changes to github?
-    $(echo $'\n') 4) Update the Kabanero CR with a release?
-    $(echo $'\n') 5) Run env_package_release?
-    $(echo $'\n> ')" user_input
+    $('\n') 1) Add, commit and push your latest changes to github?
+    $('\n') 2) Create a git release for your pipelines
+    $('\n') 3) Upload an asset to a git release version
+    $('\n') 4) Update the Kabanero CR with a release?
+    $('\n') 5) Create manifests for pipelines?
+    $('\n> ')" user_input
 
   if [ "$user_input" = 1 ]; then
+    echo "commit and push changes"
+    commit_push_latest
+
+  elif [ "$user_input" = 2 ]; then
     echo "creating release"
     create_release
 
-  elif [ "$user_input" = 2 ]; then
+  elif [ "$user_input" = 3 ]; then
     echo "uploading asset"
     upload_asset
-
-  elif [ "$user_input" = 3 ]; then
-    echo "commit and push changes"
-    commit_push_latest
 
   elif [ "$user_input" = 4 ]; then
     echo "update kabanero cr"
