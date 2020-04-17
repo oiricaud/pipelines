@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1alpha1
 kind: Pipeline
 metadata:
-  name: application-pipeline
+  name: application-pipeline-v2
 spec:
   resources:
     - name: git-source
