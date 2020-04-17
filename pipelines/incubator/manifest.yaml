@@ -1,0 +1,9 @@
+contents:
+- file: tasks/build-image-from-source.yaml
+  sha256: 269bb7783cabf90deea3bb81a15e2251f5d161fabbdee2ea86ccc84418848c56
+- file: tasks/deploy-application.yaml
+  sha256: f9385cb341ada24be1420d5f3f99bd2816c541244cd4d799c4674141c8f94a2d
+- file: pipelines/application-pipeline.yaml
+  sha256: ddf4de5cacbd83cd2720de9c7b524eb8705fc9e537bd3c45f6e98b7961efa4c3
+- file: templates/nodejs-mcm-pl-template.yaml
+  sha256: 54bc2ab21a1e0f064058c0d749619c0f9d92faf38a194200310d0767650b28ad

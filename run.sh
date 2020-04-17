@@ -151,7 +151,7 @@ update_kabanero_cr() {
 add_pipeline_kabanero_cr() {
   oc project kabanero
 
-  oc get kabaneros kabanero -o json > ./json/temp.json
+  oc get kabaneros kabanero -o json > ./json/kabanero.json
 
   read -p "Enter label for pipeline [i.e mcm-pipelines] " name_of_pipeline
   read -p "Where are the pipelines being hosted? [i.e www.github.com/org/repo-pipelines/kabanero.tar.gz] " host_url
@@ -175,6 +175,9 @@ add_pipeline_kabanero_cr() {
   result=$(jq '.spec.stacks.pipelines[1]='"$(cat ./json/add_pipeline_modified_template.json)"'' ./json/kabanero.json)
 
   echo $result | json_pp > ./json/kabanero-2.json
+
+  cd ./json
+  oc apply -f kabanero-2.json
 
 }
 
