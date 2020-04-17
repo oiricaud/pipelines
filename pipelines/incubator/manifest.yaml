@@ -4,6 +4,6 @@ contents:
 - file: tasks/deploy-application.yaml
   sha256: f9385cb341ada24be1420d5f3f99bd2816c541244cd4d799c4674141c8f94a2d
 - file: pipelines/application-pipeline.yaml
-  sha256: 6190b39fe7930d437797ec9936029307ec463ff20af30a2f83d748532ed163ea
+  sha256: b44f64f46a2e98fe0168098215a3b952cb90a3bd2abac545fe8ee25adef7b41a
 - file: templates/nodejs-mcm-pl-template.yaml
   sha256: 54bc2ab21a1e0f064058c0d749619c0f9d92faf38a194200310d0767650b28ad
