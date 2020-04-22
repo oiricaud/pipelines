@@ -8,7 +8,7 @@ metadata:
 spec:
   inputs:
     params:
-      - default: googlefu/apic_compiler:v2-amd64
+      - default: googlefu/apic_compiler:v3-amd64
         name: asuh-image
         type: string
     resources:

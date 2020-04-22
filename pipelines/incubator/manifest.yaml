@@ -1,12 +1,12 @@
 contents:
 - file: tasks/update-kabanero-cr-task.yaml
-  sha256: b8bd9c11f61822038c0b3281903439e6d5c45ea78c33be064af8359079e59bac
+  sha256: 6c9c398db7e2563ef13431edd2d703d5a92a7b6d5af1392e02d2b6fa1a7ba237
 - file: tasks/upload-asset-to-git-task.yaml
-  sha256: bafdc362260a717b82d7cc21624f8c2d0d1cbfbef1ade955d821573df95ed230
+  sha256: 976ccf867b84c999e67153b7244947f73d7f09261eec88c2895ccf3c1a0c27da
 - file: tasks/package-pipelines-task.yaml
-  sha256: b3cdbfb02920a6ed96e401b600dc6c97a60871ad6f9bcfcb1dc616ea7e703208
+  sha256: 623e080ccbca690de50d12bd3b67bfec13f542552f879f60a0cf38180bf8b7f3
 - file: tasks/create-release-for-git-task.yaml
-  sha256: 8f2920fa3c6b69a7c78cb046e7a6c3b10cb32361cee899eff4b7d1f2f5d99f63
+  sha256: a68951433956e6e5e5f4a415bdd387965a32bbe09b147a94b687a2d90d26f2a7
 - file: pipelines/package-release-update-pl.yaml
   sha256: f4a75dfac1cc9b143390eee194ac301344f5d6bc09fc26372792fd6118fa15c0
 - file: templates/nodejs-mcm-pl-template.yaml
