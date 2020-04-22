@@ -21,27 +21,27 @@ Step 7/13 : COPY nginx/startup.sh  /opt/startup.sh
  ---> Using cache
  ---> b41a7f5fb2ce
 Step 8/13 : COPY assets            /opt/www/public
- ---> 5439fbfe287b
+ ---> 6968320e4c95
 Step 9/13 : EXPOSE 8080
- ---> Running in 0bfa2899a9e4
-Removing intermediate container 0bfa2899a9e4
- ---> 14c4b03a1b4a
+ ---> Running in 0651b8031918
+Removing intermediate container 0651b8031918
+ ---> 0acc05fed52b
 Step 10/13 : EXPOSE 8443
- ---> Running in a12dc09d8882
-Removing intermediate container a12dc09d8882
- ---> a56e08baafcb
+ ---> Running in 500db2d64e33
+Removing intermediate container 500db2d64e33
+ ---> 56ba1ceec3b6
 Step 11/13 : RUN touch /var/run/nginx.pid &&   chown -R nginx:0 /var/run/nginx.pid /var/cache/nginx /opt/www/public /etc/nginx /run &&   chmod -R g=u /opt/www/public /var/cache/nginx /etc/nginx /var/run/nginx.pid /run
- ---> Running in 7dc9737d37f1
-Removing intermediate container 7dc9737d37f1
- ---> 9b659550ab3e
+ ---> Running in 61f6dd0c72a9
+Removing intermediate container 61f6dd0c72a9
+ ---> 15612ee9b338
 Step 12/13 : USER nginx
- ---> Running in 9de261383751
-Removing intermediate container 9de261383751
- ---> 4ca39787b0d2
+ ---> Running in 8b7eac15fa5c
+Removing intermediate container 8b7eac15fa5c
+ ---> 142cfb7b1286
 Step 13/13 : ENTRYPOINT ["/opt/startup.sh"]
- ---> Running in d12877a48c0b
-Removing intermediate container d12877a48c0b
- ---> 78aa02c4c699
-Successfully built 78aa02c4c699
+ ---> Running in 5ea2ff757034
+Removing intermediate container 5ea2ff757034
+ ---> f04cc4713cb1
+Successfully built f04cc4713cb1
 Successfully tagged yellocabins/pipelines-index:latest
 Successfully tagged yellocabins/pipelines-index:SNAPSHOT

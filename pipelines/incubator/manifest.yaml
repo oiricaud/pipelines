@@ -2,7 +2,7 @@ contents:
 - file: tasks/update-kabanero-cr-task.yaml
   sha256: 65ea855ccc9ecfcc9b3c59ea7d8bf1737adfb584c702987d41eec2f4ae425d47
 - file: tasks/upload-asset-to-git-task.yaml
-  sha256: 715c5c3cebff436e14661a7809fc51934c72455e57b8fa90b41f73588d5fff9e
+  sha256: a44c7b79c145aec6d4eafca1273a0051050594d2a89996d66cf69a328b3dcee2
 - file: tasks/package-pipelines-task.yaml
   sha256: e61b4af4cbadad503464bd5dfde4244b5607d7505d68e650207ad45c7b3c7af2
 - file: tasks/create-release-for-git-task.yaml
