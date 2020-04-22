@@ -29,6 +29,8 @@ spec:
   resources:
     - name: git-source
       type: git
+    - name: docker-image
+      type: image
   tasks:
     - name: package-pipelines
       resources:
