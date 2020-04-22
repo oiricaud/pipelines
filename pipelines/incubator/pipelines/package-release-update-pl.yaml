@@ -45,19 +45,19 @@ spec:
     - name: create-release-for-git
       resources:
         inputs:
-          - name: git-source
+          - name: source
             resource: git-source
           - name: image
             resource: docker-image
       runAfter:
-        - package-pipelines
+        - package-pipelines-task
       taskRef:
         kind: Task
         name: create-release-for-git-task
     - name: upload-asset-to-git
       resources:
         inputs:
-          - name: git-source
+          - name: source
             resource: git-source
           - name: image
             resource: docker-image
@@ -69,7 +69,7 @@ spec:
     - name: update-kabanero-cr
       resources:
         inputs:
-          - name: git-source
+          - name: source
             resource: git-source
           - name: image
             resource: docker-image
