@@ -1,5 +1,5 @@
 BUILDING: yellocabins/pipelines-index:SNAPSHOT
-Sending build context to Docker daemon  55.81kB
+Sending build context to Docker daemon  56.83kB
 Step 1/13 : FROM registry.access.redhat.com/ubi8/ubi-minimal
  ---> 6ce38bb5210c
 Step 2/13 : LABEL name="pipelies-index"       vendor="Kabanero"       version="1"       release="1"       summary="Nginx container to host Kabanero pipelines"       description="Nginx container to host Kabanero pipelines"
@@ -21,27 +21,27 @@ Step 7/13 : COPY nginx/startup.sh  /opt/startup.sh
  ---> Using cache
  ---> b41a7f5fb2ce
 Step 8/13 : COPY assets            /opt/www/public
- ---> b8f08c575435
+ ---> 22489c4cd184
 Step 9/13 : EXPOSE 8080
- ---> Running in f5f0c531a3e9
-Removing intermediate container f5f0c531a3e9
- ---> 5363963ca63e
+ ---> Running in 042af55f158c
+Removing intermediate container 042af55f158c
+ ---> a23c2d701657
 Step 10/13 : EXPOSE 8443
- ---> Running in 88422c26f378
-Removing intermediate container 88422c26f378
- ---> f8baa6c49883
+ ---> Running in c183c6dda16d
+Removing intermediate container c183c6dda16d
+ ---> 1a82d5fa6693
 Step 11/13 : RUN touch /var/run/nginx.pid &&   chown -R nginx:0 /var/run/nginx.pid /var/cache/nginx /opt/www/public /etc/nginx /run &&   chmod -R g=u /opt/www/public /var/cache/nginx /etc/nginx /var/run/nginx.pid /run
- ---> Running in 805b554a69df
-Removing intermediate container 805b554a69df
- ---> 9f5ab5b0135a
+ ---> Running in a460862b17c0
+Removing intermediate container a460862b17c0
+ ---> cf4f9ae30047
 Step 12/13 : USER nginx
- ---> Running in 2a36f9729e1d
-Removing intermediate container 2a36f9729e1d
- ---> e7c73d133ef1
+ ---> Running in 294462f8ebf3
+Removing intermediate container 294462f8ebf3
+ ---> c354746fafca
 Step 13/13 : ENTRYPOINT ["/opt/startup.sh"]
- ---> Running in 1bf356a56a40
-Removing intermediate container 1bf356a56a40
- ---> d188d0c45395
-Successfully built d188d0c45395
+ ---> Running in 8098056bcb76
+Removing intermediate container 8098056bcb76
+ ---> 56e4652e9fb9
+Successfully built 56e4652e9fb9
 Successfully tagged yellocabins/pipelines-index:latest
 Successfully tagged yellocabins/pipelines-index:SNAPSHOT
