@@ -1,9 +1,17 @@
 contents:
-- file: tasks/build-image-from-source.yaml
-  sha256: 269bb7783cabf90deea3bb81a15e2251f5d161fabbdee2ea86ccc84418848c56
-- file: tasks/deploy-application.yaml
-  sha256: f9385cb341ada24be1420d5f3f99bd2816c541244cd4d799c4674141c8f94a2d
-- file: pipelines/application-pipeline.yaml
-  sha256: ebf8747f9ea678ab9620daa4b7eef2162bb80605e13598af8f59aaabcfc3bd23
+- file: tasks/update-kabanero-cr-task.yaml
+  sha256: 2c0ebf3acdc5cfb554fd31cc04b9b01d4fe4941fd9aa50a42448e6fc2833ecae
+- file: tasks/upload-asset-to-git-task.yaml
+  sha256: e7f262d576aa77f6753756cd3d0dec8c488e284926eecd1ccb608617c9dbe03a
+- file: tasks/package-pipelines-task.yaml
+  sha256: 2a4a87ce8195cbf06a88acdf4554f52ad846cf4c155f7fa92e666bbdcce9a721
+- file: tasks/create-release-for-git-task.yaml
+  sha256: 86b84732d7a54cbecf7baff2f37bb38afbdf2f625d50b065e44de024c7b049d6
+- file: pipelines/package-release-update-pl.yaml
+  sha256: fffecb130eb04c0aaf48ef51f3170299e3e072ce85645265a63a736412a7900c
 - file: templates/nodejs-mcm-pl-template.yaml
-  sha256: 54bc2ab21a1e0f064058c0d749619c0f9d92faf38a194200310d0767650b28ad
+  sha256: 45e7802e38d496865891a98d6c047c69c9935461117adb7cabaf3676f218807f
+- file: bindings/package-release-update-pl-pullrequest-binding.yaml
+  sha256: d85e58104d6816c6d3e46d6753a09afafa1d0a220917979438e5243ab2412e34
+- file: bindings/package-release-update-pl-push-binding.yaml
+  sha256: d4bbb54450848660bd281e6db2d4dc9c24fa63bf2f37468c5a53f4a407a47eaa
