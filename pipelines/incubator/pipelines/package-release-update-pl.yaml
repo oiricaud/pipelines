@@ -1,0 +1,87 @@
+# The responsibility of this pipeline is to package kabanero pipelines, 
+# release them to github and create and update the kabanero custom resource to
+# point to x release.
+
+# The only constant is change.
+# Pipelines will grow and change over time and hence we need a place to version
+# control pipelines. 
+
+# e.g
+# xyz-pipeline grows over time and exists in the xyz-pipeline github repo 
+# you would then use this pipeline in the kabanero namespace and create a web-
+# hook for the xyz-pipeline repo and use the package-release-update-pl pipeline
+# to deploy your xyz-pipeline repo to kabanero 
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: package-release-update-pl
+  namespace: kabanero
+  author: Oscar I. Ricaud
+  date: 04/21/20
+spec:
+  params:
+    - description: The event type
+      name: event-type
+      type: string
+    - description: The event ref
+      name: event-ref
+      type: string
+  resources:
+    - name: git-source
+      type: git
+  tasks:
+    - name: package-pipelines
+      resources:
+        inputs:
+          - name: source
+            resource: git-source
+      taskRef:
+        kind: Task
+        name: package-pipelines-task
+    - name: create-release-for-git
+      resources:
+        inputs:
+          - name: git-source
+            resource: git-source
+        outputs:
+          - name: git-source
+            resource: git-source
+      runAfter:
+        - package-pipelines
+      taskRef:
+        kind: Task
+        name: create-release-for-git-task
+    - name: upload-asset-to-git
+      resources:
+        inputs:
+          - name: git-source
+            resource: git-source
+        outputs:
+          - name: docker-image
+            resource: docker-image
+          - name: git-source
+            resource: git-source
+      runAfter:
+        - create-release-for-git
+      taskRef:
+        kind: Task
+        name: upload-asset-to-git-task
+    - name: update-kabanero-cr
+      resources:
+        inputs:
+          - name: git-source
+            resource: git-source
+        outputs:
+          - name: docker-image
+            resource: docker-image
+          - name: git-source
+            resource: git-source
+      runAfter:
+        - upload-asset-to-git
+      taskRef:
+        kind: Task
+        name: update-kabanero-cr-task
+    
+
+
+

@@ -10,7 +10,7 @@ token=$(git config --global github.token)
 commit_push_latest() {
   git add .
   git reset ./ci/env.sh
-  git commit -m "uploading pipelines"
+  git commit -m "added the pipeline to version control pipelines!"
   git push -u origin master
 }
 

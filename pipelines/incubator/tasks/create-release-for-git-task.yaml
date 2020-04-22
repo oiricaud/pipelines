@@ -1,0 +1,58 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: create-release-for-git-task
+  namespace: kabanero
+  author: Oscar I. Ricaud
+  date: 04/21/20
+spec:
+  inputs:
+    params:
+    resources:
+      - name: source
+        type: git
+  steps:
+    - args:
+        - -c
+        - |
+            set -e
+            
+            pwd
+            # gets the release information that gets uploaded to github
+            get_release_info() {
+                {
+                cat <<EOF
+                {
+                "tag_name": "$version",
+                "target_commitish": "$branch",
+                "name": "$version",
+                "body": "$text",
+                "draft": false,
+                "prerelease": false
+                }
+            EOF
+                }
+            }
+            
+            git clone https://github.com/oiricaud/pipelines
+            cd /pipelines/ci/
+            # ./env.sh
+            ./package.sh
+            ./release.sh
+
+            # get current release version in git
+            curl -s https://api.github.com/repos/oiricaud/pipelines/releases/latest > get_version.json
+            current_version=jq --raw-output '.tag_name' ./get_version.json
+            echo $current_version
+            remove_first_char="${current_version:1}" # v42.0 -> 42.0
+            new_version=$remove_first_char+1
+            echo $new_version
+            
+            echo "Create release $new_version for repo: $repo_full_name branch: $branch"
+            curl --data "$(get_release_info)" "https://api.github.com/repos/$repo_full_name/releases?access_token=$token"
+
+      command:
+        - /bin/bash
+      resources: {}
+      workingDir: $(inputs.resources.source.path)
+

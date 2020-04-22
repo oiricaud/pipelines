@@ -1,0 +1,72 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: upload-asset-to-git-task
+  namespace: kabanero
+  author: Oscar I. Ricaud
+  date: 04/21/20
+spec:
+  inputs:
+    params:
+    resources:
+      - name: source
+        type: git
+  steps:
+    - args:
+        - -c
+        - |
+            set -e
+            curl -s https://api.github.com/repos/oiricaud/pipelines/releases/latest > get_version.json
+            tag=jq --raw-output '.tag_name' ./get_version.json
+            # read -p "Upload asset to what version? i.e v1.0 : " tag
+
+            filename=./ci/assets/default-kabanero-pipelines.tar.gz
+            github_api_token=$(git config --global github.token)
+            repo_full_name=$(git config --get remote.origin.url | sed 's/.*:\/\/github.com\///;s/.git$//')
+
+            set -e xargs="$(which gxargs || which xargs)"
+
+            # Validate settings.
+            [ "$TRACE" ] && set -x
+
+            for line in $CONFIG; do
+                eval "$line"
+            done
+
+            # Define variables.
+            GH_API="https://api.github.com"
+            GH_REPO="$GH_API/repos/$repo_full_name"
+            GH_TAGS="$GH_REPO/releases/tags/$tag"
+            AUTH="Authorization: token $github_api_token"
+
+            if [[ "$tag" == 'LATEST' ]]; then
+                GH_TAGS="$GH_REPO/releases/latest"
+            fi
+
+            # Validate token.
+            curl -o /dev/null -sH "$AUTH" $GH_REPO || {
+                echo "Error: Invalid repo, token or network issue!"
+                exit 1
+            }
+
+            # Read asset tags.
+            response=$(curl -sH "$AUTH" $GH_TAGS)
+
+            # Get ID of the asset based on given filename.
+            eval $(echo "$response" | grep -m 1 "id.:" | grep -w id | tr : = | tr -cd '[[:alnum:]]=')
+            [ "$id" ] || {
+                echo "Error: Failed to get release id for tag: $tag"
+                echo "$response" | awk 'length($0)<100' >&2
+                exit 1
+            }
+
+            # Construct url
+            GH_ASSET="https://uploads.github.com/repos/$repo_full_name/releases/$id/assets?name=$(basename $filename)"
+
+            curl "$GITHUB_OAUTH_BASIC" --data-binary @"$filename" -H "Authorization: token $github_api_token" -H "Content-Type: application/octet-stream" "$GH_ASSET"
+
+      command:
+        - /bin/bash
+      resources: {}
+      workingDir: $(inputs.resources.source.path)
+

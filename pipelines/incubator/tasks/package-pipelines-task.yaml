@@ -1,0 +1,28 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: package-pipelines-task
+  namespace: kabanero
+  author: Oscar I. Ricaud
+  date: 04/21/20
+spec:
+  inputs:
+    params:
+    resources:
+      - name: source
+        type: git
+  steps:
+    - args:
+        - -c
+        - |
+            set -e
+            git clone https://github.com/oiricaud/pipelines
+            cd /pipelines/ci/
+            # ./env.sh
+            ./package.sh
+            ./release.sh  
+      command:
+        - /bin/bash
+      resources: {}
+      workingDir: $(inputs.resources.source.path)
+

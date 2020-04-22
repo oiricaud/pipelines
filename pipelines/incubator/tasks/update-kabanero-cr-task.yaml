@@ -1,0 +1,67 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: update-kabaner-cr-task
+  namespace: kabanero
+  author: Oscar I. Ricaud
+  date: 04/21/20
+spec:
+  inputs:
+    params:
+    resources:
+      - name: source
+        type: git
+  steps:
+    - args:
+        - -c
+        - |
+            oc project kabanero
+            # get current kabanero custom resource from openshift and store it in a temp file
+            oc get kabaneros kabanero -o json > ./json/temp.json
+        
+            # read -p "Enter name of pipeline to update " name_of_pipeline
+            # read -p "Enter release version to use on this pipeline " release_version
+            name_of_pipeline=oscar-pipelines
+            release_verion=curl -s https://api.github.com/repos/oiricaud/pipelines/releases/latest  | grep "tag_name"
+            # define variables
+            pipeline_to_update=\"${name_of_pipeline}\"
+            new_url="https://github.com/oiricaud/pipelines/releases/download/$release_version/default-kabanero-pipelines.tar.gz"
+            get_sha=$(shasum -a 256 ./ci/assets/default-kabanero-pipelines.tar.gz | grep -Eo '^[^ ]+' )
+        
+            # add double quotes to the sha256
+            new_sha=\"${get_sha}\"
+        
+            # Iterate through all pipelines in stack and find the id that matches the same repo name
+            num_of_pipelines=$(jq '.spec.stacks.pipelines | length' ./json/temp.json)
+            pipeline_index=0
+            for ((n=0;n<num_of_pipelines;n++));
+            do
+                get_id=$(jq '.spec.stacks.pipelines | .['$n'].id' ./json/temp.json)
+                echo "----> pipeline:" "$get_id"
+                if [ "$get_id" = $pipeline_to_update ]; then
+                echo "found pipeline!"
+                pipeline_index=$n;
+                fi
+            done
+            printf $pipeline_index
+        
+            # update values for keys url and sha256 and store it in a new kaberno.json file
+            jq '.spec.stacks.pipelines | .['$pipeline_index'].https.url = '\"${new_url}\"' | .['$pipeline_index'].sha256 = '$new_sha'' ./json/temp.json | json_pp > ./json/kabanero.json
+        
+            # store everything inside the pipelines object
+            jq_get_pipelines=$(jq '.spec.stacks.pipelines='"$(cat ./json/kabanero.json)"'' ./json/temp.json)
+        
+            # slap the pipelines and replace them from the kabanero.json file
+            echo $jq_get_pipelines | json_pp > ./json/kabanero.json
+        
+            # update the changes to the kabanero custom resource
+            oc apply -f ./json/kabanero.json
+        
+            # print the new results
+            oc get kabaneros kabanero -o yaml
+
+      command:
+        - /bin/bash
+      resources: {}
+      workingDir: $(inputs.resources.source.path)
+
