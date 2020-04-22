@@ -8,7 +8,7 @@ contents:
 - file: tasks/create-release-for-git-task.yaml
   sha256: 0078841faff24ccbef2abec18b530d7e8b4667e308054581bacac8a8747434a9
 - file: pipelines/package-release-update-pl.yaml
-  sha256: af66a0943413688b731ee7d1a38e3c69dcc6844ccbeb511daf67551f270281c9
+  sha256: 4cf1c6734916a782de6db87deab5d6dfe5173b369fd718f234aec500782f1e19
 - file: templates/nodejs-mcm-pl-template.yaml
   sha256: 45e7802e38d496865891a98d6c047c69c9935461117adb7cabaf3676f218807f
 - file: bindings/package-release-update-pl-pullrequest-binding.yaml
