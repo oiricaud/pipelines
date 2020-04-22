@@ -59,7 +59,7 @@ spec:
       command:
         - /bin/bash
       resources: {}
-      name: create-release-for-git
+      name: create-release-for-git-task
       image: $(inputs.params.asuh-image)
       workingDir: $(inputs.resources.source.path)
 

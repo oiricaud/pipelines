@@ -29,7 +29,7 @@ spec:
       command:
         - /bin/bash
       resources: {}
-      name: package-pipelines
+      name: package-pipelines-task
       image: $(inputs.params.asuh-image)
       workingDir: $(inputs.resources.source.path)
 

@@ -73,7 +73,7 @@ spec:
       command:
         - /bin/bash
       resources: {}
-      name: upload-asset-to-git
+      name: upload-asset-to-git-task
       image: $(inputs.params.asuh-image)
       workingDir: $(inputs.resources.source.path)
 
