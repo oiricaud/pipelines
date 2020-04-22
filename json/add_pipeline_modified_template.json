@@ -1,7 +1,7 @@
 {
   "https": {
-    "url": "https://github.com/oiricaud/pipelines/releases/download/v44.0/default-kabanero-pipelines.tar.gz"
+    "url": "https://github.com/oiricaud/pipelines/releases/download/v48.0/default-kabanero-pipelines.tar.gz"
   },
-  "id": "oscar-pipelines-3",
-  "sha256": "73836aa432a3ec36586fbe937bb30422616b3f47757a808990b074a1fc1d0c57"
+  "id": "package-update-release-pl",
+  "sha256": "34eb979429e8c3e99c7de35bb9fd8b5a290b5015c4c543f3941f7e2df028ce30"
 }
