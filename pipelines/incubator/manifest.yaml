@@ -4,7 +4,7 @@ contents:
 - file: tasks/upload-asset-to-git-task.yaml
   sha256: 976ccf867b84c999e67153b7244947f73d7f09261eec88c2895ccf3c1a0c27da
 - file: tasks/package-pipelines-task.yaml
-  sha256: 623e080ccbca690de50d12bd3b67bfec13f542552f879f60a0cf38180bf8b7f3
+  sha256: 075f0eaccb815e5f2cbf5503a289bf9fe846a1e9e58aabca8e4a4753ba08211d
 - file: tasks/create-release-for-git-task.yaml
   sha256: a68951433956e6e5e5f4a415bdd387965a32bbe09b147a94b687a2d90d26f2a7
 - file: pipelines/package-release-update-pl.yaml

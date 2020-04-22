@@ -21,8 +21,8 @@ spec:
         - -c
         - |
             set -e
-            git clone https://github.com/oiricaud/pipelines
-            cd /pipelines/ci/
+            git clone https://github.com/oiricaud/pipelines temp
+            cd /temp/ci/
             # ./env.sh
             ./package.sh
             ./release.sh  
