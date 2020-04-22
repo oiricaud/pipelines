@@ -50,7 +50,7 @@ spec:
           - name: image
             resource: docker-image
       runAfter:
-        - package-pipelines-task
+        - package-pipelines
       taskRef:
         kind: Task
         name: create-release-for-git-task

@@ -1,7 +1,7 @@
 {
   "https": {
-    "url": "https://github.com/oiricaud/pipelines/releases/download/v55.0/default-kabanero-pipelines.tar.gz"
+    "url": "https://github.com/oiricaud/pipelines/releases/download/v58.0/default-kabanero-pipelines.tar.gz"
   },
   "id": "package-release-update-pl",
-  "sha256": "8fc1e51520439936bc26a3d7a5045a7aa1de4f6447c8f1f4dfbe60c823b3f81a"
+  "sha256": "7a48f9adb663fcf9b09fbc860cc7b9c179ed7d3b17475dacef3e2783fdbf50f2"
 }
