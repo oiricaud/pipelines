@@ -68,5 +68,6 @@ spec:
       command:
         - /bin/bash
       resources: {}
+      name: upload-asset-to-git
       workingDir: $(inputs.resources.source.path)
 

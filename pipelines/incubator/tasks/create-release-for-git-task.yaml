@@ -8,6 +8,9 @@ metadata:
 spec:
   inputs:
     params:
+      - default: googlefu/apic_compiler:v2-amd64
+        name: asuh-image
+        type: string
     resources:
       - name: source
         type: git
@@ -54,5 +57,7 @@ spec:
       command:
         - /bin/bash
       resources: {}
+      name: create-release-for-git
+      image: $(inputs.params.asuh-image)
       workingDir: $(inputs.resources.source.path)
 

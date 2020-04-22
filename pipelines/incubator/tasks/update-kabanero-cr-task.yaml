@@ -1,13 +1,16 @@
 apiVersion: tekton.dev/v1alpha1
 kind: Task
 metadata:
-  name: update-kabaner-cr-task
+  name: update-kabanero-cr-task
   namespace: kabanero
   author: Oscar I. Ricaud
   date: 04/21/20
 spec:
   inputs:
     params:
+      - default: googlefu/apic_compiler:v2-amd64
+        name: asuh-image
+        type: string
     resources:
       - name: source
         type: git
@@ -63,5 +66,7 @@ spec:
       command:
         - /bin/bash
       resources: {}
+      name: update-kabanero-cr
+      image: $(inputs.params.asuh-image)
       workingDir: $(inputs.resources.source.path)
 
